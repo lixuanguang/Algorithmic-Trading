@@ -1,0 +1,70 @@
+\section{Fundamentals}
+
+\subsection{Securities Trading and Markets}
+
+The basic function of a market is to bring buyers and sellers together.
+
+\begin{process}
+\hlt{(Four Components of a Trade)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Acquisition of information and quotes
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Quality information and transparency are crucial to price discovery
+\item Transparent markets quickly disseminate high-quality information
+\item Opaque markets are those that lack transparency
+\end{enumerate}
+\item Routing of the trade order
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Selecting the brokers to handle the trades
+\item Deciding which markets will execute the trades and transmitting the trades to the markets
+\end{enumerate}
+\item Execution. Buys are matched and executed against sells according to the rules of the market
+\item Confirmation, clearance and settlement
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Clearance is the recording and comparison of the trade records
+\item Settlement involves the actual delivery of the security and its payment
+\item Might include trade allocation
+\end{enumerate}
+\end{enumerate}
+\end{process}
+
+Hidden portions of large institutional orders are dark liquidity pools. Orders that are partially revealed are called iceberg or hidden-size orders.
+
+\begin{remark}
+\hlt{(Risks of Algorithmic Trading)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Leaks might arise from competitor efforts to revere engineer them
+\item Many algorithms lack the capacity to handle or respond to exceptional or rare events.
+\end{enumerate}
+\end{remark}
+
+An auction is a competitive market process involving multiple buyers, multiple sellers, or both. Auctions are useful and cost-effective in pricing a security with an unknown value.
+
+\begin{definition} {\color{white}space}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{English auction} is an ascending bid auction.
+\item \hlt{Dutch auction} is a descending bid auction.
+\item \hlt{First-Price Seal-Bid auctions} have all buyers simultaneously submit seal bids so that no bidders knows any of the other bids.
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Does not allow for price discovery until the auction concludes. \\
+Winner submits highest bid and pays bid price.
+\item Winner faces the Winners Curse problem if the auctioned item's value is not known with certainty.
+\end{enumerate}
+\item \hlt{Second-Price Seal-Bid (Vickrey) auctions}
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Identical to First-Price Sealed-Bid, except winner pays highest losing bid rather than his own bid.
+\item Intended to encourage higher bids by reducing Winner's Curse.
+\item Bidders bid more aggressively as a bid raises probability of winning without increasing expected cost, which is determined by someone else's bid.
+\end{enumerate}
+\item \hlt{Double auction} or \hlt{bilateral auction}
+\end{enumerate}
+\end{definition}
+

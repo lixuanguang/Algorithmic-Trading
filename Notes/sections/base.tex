@@ -1,0 +1,123 @@
+
+\usepackage[utf8]{inputenc}
+\usepackage{fancyhdr}
+\usepackage[margin=2cm,foot=1cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+
+\hypersetup{
+	colorlinks,
+	linkcolor={blue!80!black},
+	citecolor={green!80!black},
+	urlcolor={red!80!black}
+}
+
+
+% Used to set numbering of the content
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+%%
+% Math packages
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{rotating}
+\usepackage{mathrsfs}
+\usepackage{tikz-cd}
+\usepackage{float}
+\usepackage{enumitem}
+
+\graphicspath{ {./images/} }
+
+%%
+% Math Commands
+\def\upint{\mathchoice%
+	{\mkern13mu\overline{\vphantom{\intop}\mkern7mu}\mkern-20mu}%
+	{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+	{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+	{\mkern7mu\overline{\vphantom{\intop}\mkern7mu}\mkern-14mu}%
+	\int}
+\def\lowint{\mkern3mu\underline{\vphantom{\intop}\mkern7mu}\mkern-10mu\int}
+\usepackage{tikz}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\F}{\mathbf{F}}
+\newcommand{\f}{\mathbf{f}}
+\newcommand{\y}{\mathbf{y}}
+\renewcommand{\b}{\mathbf{b}}
+\renewcommand{\c}{\mathbf{c}}
+\renewcommand{\a}{\mathbf{a}}
+\newcommand{\h}{\mathbf{h}}
+\newcommand{\g}{\mathbf{g}}
+\newcommand{\z}{\mathbf{z}}
+\newcommand{\ze}{\mathbf{0}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\brk}[1]{ \left[#1\right] }
+\newcommand{\brc}[1]{ \left\{#1\right\} }
+\newcommand{\paren}[1]{ \left(#1\right) }
+\newcommand{\normop}[1]{\left\lVert#1\right\rVert_\text{op}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\uni}{\overset{\text{uni}}{\to}}
+\DeclareMathOperator{\diam}{diam}
+\newcommand{\Prr}[1]{\text{Pr}\left(#1\right)}
+\newcommand{\tabspace}{\hspace{0.45cm}}
+
+%%
+% Define some colours
+\definecolor{magenta}{HTML}{EC008C}
+\definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
+\definecolor{deeppink}{rgb}{1.0, 0.08, 0.58}
+
+%%
+% Self-defined useful shortcuts
+\newcommand{\isomorp}{\xrightarrow{\sim}}
+\newcommand{\hlt}[1]{\textit{{\color{blue}#1}}}
+\newcommand{\simpt}[1]{\textit{{\color{deeppink}#1}}}
+\newcommand{\impt}[1]{\textit{{\color{red}#1}}}
+\newcommand{\gcds}[1]{\textnormal{gcd}#1}
+\newcommand{\mins}[1]{\textnormal{min}#1}
+\newcommand{\maxs}[1]{\textnormal{max}#1}
+\newcommand{\lcms}[1]{\textnormal{lcm}#1}
+\newcommand{\degs}[1]{\textnormal{deg}#1}
+\newcommand{\exps}[1]{\textnormal{exp}#1}
+\newcommand{\tors}[1]{\textnormal{Tor}#1}
+\newcommand{\homs}[1]{\textnormal{Hom}#1}
+\newcommand{\anns}[1]{\textnormal{Ann}#1}
+\DeclareMathOperator{\sign}{sign}
+
+%%
+\setcounter{section}{0}
+% Set up math tools
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\let\oldalgorithm\algorithm
+\renewcommand{\algorithm}{\oldalgorithm\normalfont}
+\newtheorem{process}[theorem]{Process}
+\let\oldprocess\process
+\renewcommand{\process}{\oldprocess\normalfont}
+\newtheorem{method}[theorem]{Method}
+\let\oldmethod\method
+\renewcommand{\method}{\oldmethod\normalfont}
+\newtheorem{definition}[theorem]{Definition}
+\let\olddefinition\definition
+\renewcommand{\definition}{\olddefinition\normalfont}
+\newtheorem{example}[theorem]{Example}
+\let\oldexample\example
+\renewcommand{\example}{\oldexample\normalfont}
+\newtheorem{remark}[theorem]{Remark}
+\let\oldremark\remark
+\renewcommand{\remark}{\oldremark\normalfont}
