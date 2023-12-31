@@ -1,10 +1,13 @@
-
 \usepackage[utf8]{inputenc}
 \usepackage{fancyhdr}
 \usepackage[margin=2cm,foot=1cm]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage{hyperref}
 \usepackage{ragged2e}
+\usepackage{amsbsy}
+\usepackage{xparse}
+\usepackage{natbib}
+\bibliographystyle{named}
 
 \hypersetup{
 	colorlinks,
@@ -13,10 +16,17 @@
 	urlcolor={red!80!black}
 }
 
+\usepackage[nodisplayskipstretch]{setspace}
+\setstretch{1}
 
 % Used to set numbering of the content
 \setcounter{tocdepth}{2}
-\setcounter{secnumdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\newcommand{\matr}[1]{\mathbf{#1}} % undergraduate algebra version
+%\newcommand{\matr}[1]{#1}          % pure math version
+%\newcommand{\matr}[1]{\bm{#1}}     % ISO complying version
+\newcommand{\vect}[1]{\bm{#1}} % undergraduate algebra version
 
 %%
 % Math packages
@@ -31,6 +41,7 @@
 \usepackage{tikz-cd}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{makecell}
 
 \graphicspath{ {./images/} }
 
@@ -70,13 +81,24 @@
 \newcommand{\uni}{\overset{\text{uni}}{\to}}
 \DeclareMathOperator{\diam}{diam}
 \newcommand{\Prr}[1]{\text{Pr}\left(#1\right)}
-\newcommand{\tabspace}{\hspace{0.45cm}}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
 
-%%
-% Define some colours
+\definecolor{dartmouthgreen}{rgb}{0.05, 0.5, 0.06}
+\definecolor{egyptianblue}{rgb}{0.06, 0.2, 0.65}
+\definecolor{dukeblue}{rgb}{0.0, 0.0, 0.61}
+\definecolor{jazzberryjam}{rgb}{0.65, 0.04, 0.37}
 \definecolor{magenta}{HTML}{EC008C}
 \definecolor{darkmagenta}{rgb}{0.55, 0.0, 0.55}
 \definecolor{deeppink}{rgb}{1.0, 0.08, 0.58}
+
+\newcommand\disteq{\stackrel{\textnormal{dist}}{=}}
+
+\NewDocumentCommand{\evalat}{sO{\big}mm}{%
+  \IfBooleanTF{#1}
+   {\mleft. #3 \mright|_{#4}}
+   {#3#2|_{#4}}%
+}
 
 %%
 % Self-defined useful shortcuts
@@ -103,6 +125,9 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{qnbank}[theorem]{Question Bank}
+\let\oldqnbank\qnbank
+\renewcommand{\qnbank}{\oldqnbank\normalfont}
 \newtheorem{algorithm}[theorem]{Algorithm}
 \let\oldalgorithm\algorithm
 \renewcommand{\algorithm}{\oldalgorithm\normalfont}

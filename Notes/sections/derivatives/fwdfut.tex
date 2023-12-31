@@ -1,0 +1,62 @@
+\subsection{Fundamentals of Forwards and Futures}
+
+The fundamentals of hedging with futures are \hlt{hedge-and-forget} strategies, where no changes is made to adjust the hedge once it has been put in place.
+
+\begin{definition}
+\hlt{(Basic Principles of Futures Hedging)}\\
+The objective is to take a position that neutralises the risk as far as possible.
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Short Hedge}: short position on futures. \\
+Used when hedger already owns an asset and will sell the asset at some time in the future; or when asset is not owned right now but will be owned and ready for sale sometime in the future.
+\item \hlt{Long Hedge}: long position on futures. \\
+Used when hedger will purchase an asset in the future and wants to lock in the price now.
+\end{enumerate}
+\begin{table}[h]
+\begin{tabular}{|c | c | c|}
+\hline
+ & \textbf{Short Hedge} & \textbf{Long Hedge} \\ \hline
+May $15$ & \makecell[l]{Spot: $50$ \\ Futures: $49$} & \makecell[l]{Spot: $50$ \\ Futures: $49$} \\ \hline
+August $15$ Scenario 1 & \makecell[l]{Spot: $45$ \\ Gain from hedge: $4$} &  \makecell[l]{Spot: $45$ \\ Loss from hedge: $4$} \\ \hline
+August $15$ Scenario 2 & \makecell[l]{Spot: $55$ \\ Loss from hedge: $6$} & \makecell[l]{Spot: $55$ \\ Gain from hedge: $6$} \\ \hline
+\end{tabular}
+\end{table}
+\end{definition}
+
+In practice, hedging is not perfect due to factors as follows:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Asset being hedged is not exactly the same as the asset underlying the futures contract.
+\item Uncertainty as to exact date in which the asset will be bought or sold.
+\item Hedge may require the futures contract to be closed out before its delivery month.
+\end{enumerate}
+These lead to \hlt{basis risk}.
+
+\begin{definition}
+The \hlt{basis} in a hedging situation is defined as
+\begin{align}
+\text{Basis} = \text{Spot Price} - \text{Futures Price} \nonumber
+\end{align}
+An increase/decrease in basis is a strengthening/weakening of the basis.
+\end{definition}
+
+\begin{definition}
+Let $S_i$ be spot price at time $t_i$, $F_i$ be futures price at time $t_i$, $b_i$ be basis price at time $t_i$.	 Assume hedge is placed at time $t_1$, closed at time $t_2$. Price realised for asset is $S_2$, profit from futures position is $F_1 - F_2$.  Effective price obtained for asset hedging is therefore $S_2 + F_1 - F_2 = F_1 + b_2$.\\
+If $b_2$ is known, perfect hedge will result. The \hlt{basis risk} is the hedging risk from uncertainty associated with $b_2$.
+\end{definition}
+
+\begin{definition}
+\hlt{Cross Hedging} occurs when the asset underlying the futures contract is the same as the asset whose price is being hedged.
+\end{definition}
+
+Cross hedging is often used when futures of the original asset being hedged are not actively traded on the market, and the hedger seeks an alternative asset to hedge the original asset.
+
+\begin{definition}
+\hlt{Hedge Ratio} is the ratio of size of position taken in futures contract to the size of exposure.
+\end{definition}
+
+Assuming no daily settlement of futures contracts, the hedger seeks a hedge ratio that minimises the variance of the value of hedged position. Let $\Delta S$ be change in spot price during the period of hedge, $\Delta F$ be change in futures price during the period of hedge. Assuming the relationship is linear,
+\begin{equation}
+\Delta S = a + b \Delta F + \epsilon	 \nonumber
+\end{equation}
+where $a,b$ are constants, $\epsilon$ is an error term. Suppose hedge ratio is $h$.

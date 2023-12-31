@@ -1,0 +1,21 @@
+\subsection{Data Requirements}
+
+Upon data reaching the servers, it is processed using data feed handlers.\\
+
+Price data includes information retrieved or derived from exchanges or transactions. This includes trading volume of stocks, the order book, data derived from levels of various indices etc.\\
+
+Fundamental data includes financial health, financial performance, financial worth and sentiment. These may be microeconomic or macroeconomic in nature, depending on the nature of asset. A more advanced source of data includes text data requiring Large Language Models to parse, as well as alternative sources of data such as GPS, satellite images etc.\\
+
+Some examples of primary sources and data types includes:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Exchanges}: Prices, volumes, timestamps, open interest, short interest, order book data
+\item \hlt{Regulators}: Company financial statements, filings
+\item \hlt{Governments}: Macroeconomic data such as employment, inflation, GDP
+\item \hlt{Corporations}: Announcement of financial results, corporate actions
+\item \hlt{News Agencies}: Press releases or news articles
+\item \hlt{Proprietary Data Vendors}: Investment flow data, company reports etc. 
+\end{enumerate}
+
+On issues regarding missing data, the database and trading systems are required to recognise the difference between zero and blank to prevent estimation errors. Incorrect values can be reduced via ensuring data consistency of units; this can be also detected via spike filters (detects abnormally large, sudden movement in prices). To fix issues regarding corporate actions such as splits and dividends, the price history must be adjusted. For issues from incorrect timestamps, the data timestamp should be tracked against internal timestamps. Macroeconomic and financial earnings data may also produce look-ahead bias, where the data is released data later date, but recorded as a revised data in the past, hence data release date should be tracked.
+

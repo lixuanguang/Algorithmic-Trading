@@ -1,0 +1,64 @@
+\subsection{Market Fundmantals}
+
+The basic function of a market is to bring buyers and sellers together.
+
+\begin{process}
+\hlt{(Four Components of a Trade)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Acquisition of information and quotes
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Quality information and transparency are crucial to price discovery
+\item Transparent markets quickly disseminate high-quality information
+\item Opaque markets are those that lack transparency
+\end{enumerate}
+\item Routing of the trade order
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Selecting the brokers to handle the trades
+\item Deciding which markets will execute the trades and transmitting the trades to the markets
+\end{enumerate}
+\item Execution. Buys are matched and executed against sells according to the rules of the market
+\item Confirmation, clearance and settlement
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Clearance is the recording and comparison of the trade records
+\item Settlement involves the actual delivery of the security and its payment
+\item Might include trade allocation
+\end{enumerate}
+\end{enumerate}
+\end{process}
+
+Hidden portions of large institutional orders are dark liquidity pools. Orders that are partially revealed are called iceberg or hidden-size orders.
+
+\begin{remark}
+\hlt{(Risks of Algorithmic Trading)}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Leaks might arise from competitor efforts to revere engineer them
+\item Many algorithms lack the capacity to handle or respond to exceptional or rare events.
+\end{enumerate}
+\end{remark}
+
+An auction is a competitive market process involving multiple buyers, multiple sellers, or both. Auctions are useful and cost-effective in pricing a security with an unknown value. On the other hand, 
+
+\begin{definition} {\color{white}space}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \hlt{Market Order}: trade carried out immediately at best price available in market.
+\item \hlt{Limit Order}: only executed at this price or at one more favourable to the trader.
+\item \hlt{Stop/Stop-Loss Order}: order executed at the best price available (become market order) once a bid or ask is made at that particular price or a less-favourable price. Limits loss that can be incurred.
+\item \hlt{Stop-Limit Order}: combination of stop order and limit order. Order becomes limit order as soon as a bid or ask is made at the price equal to or less favourable than stop price. If stop price and limit price is the same, then the order is \hlt{stop-and-limit} order.
+\item \hlt{Market-if-Touched (MIT)/Board Order}: executed at best available price after trade occurs at a specified price or more favourable. Ensure profit is taken if sufficiently favourable price movements occur.
+\item \hlt{Market-Not-Held/Discretionary Order}: traded as market order, execution may be delayed at broker's discretion for better price.
+\item \hlt{Time-of-Day Order}: Specifies period of time during day when order can be executed.
+\item \hlt{Open/Good-Till-Cancel Order}: in effect until executed or until end of trading in particular contract.
+\item \hlt{Fill-or-Kill Order}: must be executed immediately on receipt or none at all.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+\hlt{(Cornering-the-Market)} Trader takes huge long futures position and tries to exercise control over supply of underlying commodity. As maturity of futures contract is approaching, position is not closed, number of outstanding contracts exceed commodities available. Holders of short positions desperately try to close positions, leading to rise in both futures and spot prices.\\
+Abuse is dealt with by increasing margin requirements or imposing stricter position limits or prohibiting trades that increase speculator's open position or requiring market participants to close their positions.
+\end{remark}
