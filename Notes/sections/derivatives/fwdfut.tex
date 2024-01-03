@@ -1,4 +1,6 @@
-\subsection{Fundamentals of Forwards and Futures}
+\subsection{Forwards and Futures}
+
+\subsubsection{Hedging with Futures}
 
 The fundamentals of hedging with futures are \hlt{hedge-and-forget} strategies, where no changes is made to adjust the hedge once it has been put in place.
 
@@ -46,7 +48,7 @@ If $b_2$ is known, perfect hedge will result. The \hlt{basis risk} is the hedgin
 \end{definition}
 
 \begin{definition}
-\hlt{Cross Hedging} occurs when the asset underlying the futures contract is the same as the asset whose price is being hedged.
+\hlt{Cross Hedging} occurs when the asset underlying the futures contract is not the same as the asset whose price is being hedged.
 \end{definition}
 
 Cross hedging is often used when futures of the original asset being hedged are not actively traded on the market, and the hedger seeks an alternative asset to hedge the original asset.
@@ -55,8 +57,33 @@ Cross hedging is often used when futures of the original asset being hedged are 
 \hlt{Hedge Ratio} is the ratio of size of position taken in futures contract to the size of exposure.
 \end{definition}
 
-Assuming no daily settlement of futures contracts, the hedger seeks a hedge ratio that minimises the variance of the value of hedged position. Let $\Delta S$ be change in spot price during the period of hedge, $\Delta F$ be change in futures price during the period of hedge. Assuming the relationship is linear,
+Assuming no daily settlement of futures contracts, hedger seeks a hedge ratio that minimises variance of hedged position value. Let $\Delta S$ be change in spot price, $\Delta F$ change in futures price. Assuming linear relationship,
 \begin{equation}
 \Delta S = a + b \Delta F + \epsilon	 \nonumber
 \end{equation}
-where $a,b$ are constants, $\epsilon$ is an error term. Suppose hedge ratio is $h$.
+where $a,b$ are constants, $\epsilon$ is an error term. Suppose hedge ratio is $h$. Change in value of position per unit of exposure to $S$ is:
+\begin{equation}
+\Delta S - h \Delta F = a + (b-h) \Delta F + \epsilon \nonumber
+\end{equation}
+Standard deviation is minimised by setting $h=b$. Let minimum variance hedge ratio be $h^*$. Then
+\begin{equation}
+h^* = \rho \frac{\sigma_S}{\sigma_F} \nonumber
+\end{equation}
+where $\sigma_S, \sigma_F$ is standard deviation of $\Delta S, \Delta F$ respectively, $\rho$ is coefficient of correlation.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{derivatives/hedgeratio}
+\caption{Dependence of variance of position on hedge ratio.}
+\end{figure}
+
+\hlt{Hedge effectiveness} is the proportion of variance eliminated by hedging. This is $R^2$ from regression of $\Delta S$ against $\Delta F$, and equals $\rho^2$. Parameters $\rho$, $\sigma_S$, $\sigma_F$ are estimated from historical data on $\Delta S$ and $\Delta F$.\\
+
+The optimal number of futures to be used in hedging is
+\begin{equation}
+N^* = \frac{h^* Q_A}{Q_F} \nonumber
+\end{equation}
+where $Q_A$ is size of potion being hedged (units), $Q_F$ is size of one futures contract (units). The futures contract should be on $h^* Q_A$ units of the asset.
+
+
+
