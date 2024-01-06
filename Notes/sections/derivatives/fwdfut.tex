@@ -83,7 +83,18 @@ The optimal number of futures to be used in hedging is
 \begin{equation}
 N^* = \frac{h^* Q_A}{Q_F} \nonumber
 \end{equation}
-where $Q_A$ is size of potion being hedged (units), $Q_F$ is size of one futures contract (units). The futures contract should be on $h^* Q_A$ units of the asset.
+where $Q_A$ is size of potion being hedged (units), $Q_F$ is size of one futures contract (units). The futures contract should be on $h^* Q_A$ units of the asset.\\
+
+If daily settlement is used, there are a series of one-day hedges, and thus let $\hat{\sigma}_S, \hat{\sigma}_F$ be standard deviation of percentage one-day changes in spot and future price respectively, $\hat{\rho}$ be correlation between percentage one-day changes in spot and future prices. The optimal one day hedge is then
+\begin{equation}
+h^* = \hat{\rho}\frac{\hat{\sigma}_S S}{\hat{\sigma}_F F} \nonumber
+\end{equation} 
+and the optimal number of futures to be used is then
+\begin{equation}
+N^* = \hat{\rho}\frac{\hat{\sigma}_S S Q_A}{\hat{\sigma}_F F Q_F} \nonumber
+\end{equation}
+
+If an interest $r\%$ per annum is earned or paid over the remaining life of the hedge, then the optimal number of futures is $N^* / (1+0.01r)$; this is \hlt{tailing the hedge}.
 
 
 
