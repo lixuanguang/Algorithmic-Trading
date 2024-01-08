@@ -94,7 +94,16 @@ and the optimal number of futures to be used is then
 N^* = \hat{\rho}\frac{\hat{\sigma}_S S Q_A}{\hat{\sigma}_F F Q_F} \nonumber
 \end{equation}
 
-If an interest $r\%$ per annum is earned or paid over the remaining life of the hedge, then the optimal number of futures is $N^* / (1+0.01r)$; this is \hlt{tailing the hedge}.
+If an interest $r\%$ per annum is earned or paid over the remaining life of the hedge, then the optimal number of futures is $N^* / (1+0.01r)$; this is \hlt{tailing the hedge}.\\
+
+Stock index futures may be used to hedge a well diversified equity portfolio. Let $V_A, V_F$ be the current value of portfolio and one futures contract respectively.\\
+If portfolio mirrors the index, the optimal hedge ratio is then $1.0$, and number of futures contracts to be shorted is then $N^* = \frac{V_A}{V_F}$. If portfolio do not mirror the index, then capital asset pricing model (CAPM) should be used to determine beta ($\beta$), and the number of futures contracts to be shorted is then $N^* = \beta \frac{V_A}{V_F}$, assuming maturity of futures contract is close to the maturity of the hedge.\\
+
+If instead, the hedger wishes to change the beta of portfolio where $\beta > \beta^*$, a short position $(\beta - \beta^*)\frac{V_A}{V_F}$ is required. If $\beta < \beta^*$, then a long position $(\beta^* - \beta)\frac{V_A}{V_F}$ is required.\\
+
+Stock index hedging is typically used when the portfolio manager is uncertain about performance of market, but is confident that the stocks in the portfolio will outperform the market. The hedger may also be planning to hold a portfolio for a long period of time and requires short-term protection in an uncertain market situation.\\
+
+If expiration date of hedge is later than delivery dates of all futures contracts that may be used, then the hedger may \hlt{stack and roll} by closing out one futures contract and taking the same position in a futures contract with a later delivery date.
 
 
 
