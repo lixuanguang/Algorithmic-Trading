@@ -126,4 +126,36 @@ Instruction validity may take the following forms:
 
 \subsubsection{Data Taxonomy}
 
+Data availability, storage, management, and cleaning are the core of any research environment.\\
+
+Reliable \hlt{reference data} is key foundation of a robust quantitative strategy development, with following data:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Trading Universe: evolving daily to incorporate new listings, de-listings etc. Knowing when a particular stock no longer trades is important to avoid survivor bias.
+\item Symbology Mapping: ISIN, SEDOL, RIC, Bloomberg Tickers etc. Data is not static, symbols may change, complicating historical data merges. Mapping needs to persist as point-in-time data and allow for historical 'as-of-date' usage, require implementation of bi-temporal data structure. 
+\item Ticker Changes: for reasons described in symbology mapping. To maintain historical table of ticker changes to seamlessly go up and down time series data.
+\item Corporate Actions Calendars: contain stock and cash dividends (announcement, execution date), stock splits, reverse splits, rights offer, mergers and acquisitions, spin off, free float or shares outstanding adjustments, quotation suspensions etc.\\
+For dividends, announcements may coincide with more volatility, jumps in price time series. Allow building of strategies that look to benefit from the added volatility.\\
+For stock splits, reverse splits, rights offers, all historical data need to be adjusted backward to reflect the split (both volume and price).\\
+For M\&A, spin-offs, to account for changes in valuation, hence used in Merger Arbitrage strategies.\\
+Suspensions result in gaps in data, may impact backtesting.
+\item Static Data: country, sector, primary exchange, currency, and quote factor. May be used to group instruments based on fundamental similarities (hence for pairs trading). Maintaining a table of quotation currency per instrument necessary to aggregate positions at portfolio level.
+\item Exchange Specific Data: individual exchanges have variety of differences to be accounted for when designing trading strategies. First group of information concerns the hours and dates of operations:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Holiday Calendar: Strategies trading simultaneously in several markets and leveraging correlation may not perform as well if one market is closed and another is open.
+\item Exchange Sessions Hours: Different sessions (Pre-Market, Continuous Core, After-Hour etc.); auction times and respective cutoff times for oder submission; lunch break restricting intraday trading and auctions before/after lunch; settlement times for futures market. Daylight Saving Time (DST) adjustments; length of trading hours during course of the year; different trading hours by venue.
+\item Disrupted Days: Exchange outages or trading disruptions, market data issues. To be recorded so they can be filtered out when building or testing strategies.
+\end{enumerate}
+Second group of information governing the mechanics of trading:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Tick Size: Minimum eligible price increment; may vary by instrument and as a function of price.
+\item Trade and Quote Lots: Minimum size increment for quotes or trades.
+\item Limit-Up and Limit-Down Constraints: Maximum daily fluctuations of securities, and whether trading is paused or can only be traded at better prices than the threshold.
+\item Short Sell Restrictions: Restrict shot sells not to trade at price worse than last price, or not to create a new quote that will be lower than the lowest prevailing quote. Impact ability to source liquidity.
+\end{enumerate}
+\item Market Data Condition Codes: 
+\end{enumerate}
+
 
