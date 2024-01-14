@@ -1,0 +1,61 @@
+Based on the books by James Douglas \cite{hamilton_1994}, and ...
+
+\subsubsection{Stationary Time Series}
+
+\begin{definition}
+A \hlt{linear first-order difference equation} is defined as
+\begin{equation}
+y_t = \phi y_{t-1} + w_t \nonumber
+\end{equation}
+where $y_t$ is the target variable (with $y_{t-1}$ the lag $1$ variable), $w_t$ is an input variable at time $t$
+\end{definition}
+
+
+The difference equation may be solved by recursive substitution to arrive at
+\begin{equation}
+y_t = \phi^{t+1}y_{-1} + \phi^{t} w_0 + \phi^{t-1} w_1 + \phi^{t-2} w_2 + \cdots + \phi w_{t-1} + w_t \nonumber
+\end{equation}
+
+The \hlt{dynamic multiplier} calculates effect of $w_t$ on $y_{t+j}$, and is given by
+\begin{equation}
+\frac{\partial y_{t+j}}{\partial w_t} = \phi^j \nonumber
+\end{equation}
+If $\abs{\phi} < 1$, the system is stable. If $\abs{\phi} > 1$, then the system is explosive.
+
+We may generalise the process to \hlt{$p$-th order difference equation}, i.e.,
+\begin{equation}
+y_t = \phi_t y_{t-1} + \phi_2 t_{t-2} + \cdots + \phi_p y_{t-p} + w_t \nonumber
+\end{equation}
+We may rewrite this as a first-order difference equation in a ($p \times 1$) vector $\bm{\xi}_t$:
+\begin{equation}
+\bm{\xi}_t = 
+\begin{bmatrix}
+y_t \\
+y_{t-1} \\ 
+\vdots
+y_{t-p+1}
+\end{bmatrix} \nonumber
+\end{equation}
+Define the ($p \times p$) matrix $\bm{F}$ by
+\begin{equation}
+\bm{F} =
+\begin{bmatrix}
+\phi_1 & \phi_2 & \phi_3 & \cdots & \phi_{p-1} & \phi_p \\
+1 & 0 & 0 & \cdots & 0 & 0 \\
+0 & 1 & 0 & \cdots & 0 & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & 0 & \cdots & 1 & 0
+\end{bmatrix} \nonumber
+\end{equation}
+Finally, define the ($p \times 1$) vector $\bm{v}_t$ by
+\begin{equation}
+\bm{v}_t =
+\begin{bmatrix}
+w_t \\
+0 \\
+0 \\
+\vdots \\
+0
+\end{bmatrix} \nonumber
+\end{equation}
+Then the system of $p$ equations $\bm{\xi}_t = \bm{F} \bm{\xi}_{t-1} + \bm{v}_t$ is identical to the $p$-th order difference equation.
