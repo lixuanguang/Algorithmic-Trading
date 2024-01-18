@@ -58,4 +58,8 @@ w_t \\
 0
 \end{bmatrix} \nonumber
 \end{equation}
-Then the system of $p$ equations $\bm{\xi}_t = \bm{F} \bm{\xi}_{t-1} + \bm{v}_t$ is identical to the $p$-th order difference equation.
+Then the system of $p$ equations $\bm{\xi}_t = \bm{F} \bm{\xi}_{t-1} + \bm{v}_t$ is identical to the first order difference equation, and by recursive substitution, we have the following for the case of $p$-th order difference equation:
+\begin{equation}
+\bm{\xi}_{t + j} = \bm{F}^{j+1} \bm{\xi}_{t-1} + \bm{F}^{j} \bm{v}_{t} + \bm{F}^{j-1} \bm{v}_{t+1} + \cdots + \bm{F} \bm{v}_{t+j-1} + \bm{v}_{t+j} \nonumber
+\end{equation}
+Hence the dynamic multiplier is then $\frac{\partial y_{t+j}}{\partial w_t} f^{(j)}_{11}$, where $f^{(j)}_{11}$ is the $(1,1)$ element of $\bm{F}^j$.
