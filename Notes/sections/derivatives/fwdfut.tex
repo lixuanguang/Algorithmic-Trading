@@ -2,7 +2,112 @@
 
 \subsubsection{Pricing}
 
+To examine how forward prices and futures prices are related to spot price, we assume the following are true for some market participants:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item No transaction costs
+\item Same tax rate on all net trading profits
+\item Money borrowed and lend are at the same risk-free rate
+\item Arbitrage opportunities are taken advantaged of as they occur
+\end{enumerate}
 
+Let $T$ be time until delivery date (in years), $S_0$ be price of underlying asset today, $F_0$ be price of forward or futures today, $r$ be zero-coupon risk-free rate per annum in continuous compounding (maturing in $T$ years).\\
+
+Consider a forward contract on underlying asset with spot price $S_0$ that provides no income. Then
+\begin{equation}
+F_0 = S_0 e^{rT} \nonumber
+\end{equation}
+If $F_0 > S_0 e^{rT}$, long asset and short forward. If $F_0 < S_0 e^{rT}$, short asset and long forward.\\
+If short sales are not possible, and arbitrage opportunities exist, then if $F_0 > S_0 e^{rT}$, investor may:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Borrow $S_0$ in cash at an interest rate $r$ for $T$ years
+\item Buy 1 unit of asset
+\item Enter forward contract to sell $1$ unit of asset
+\end{enumerate}
+At time $T$, asset is sold for $F_0$, investor to repay $S_0 e^{rT}$ loan, making profit $F_0 - S_0 e^{rT}$.\\
+If $F_0 < S_0 e^{rT}$, investor may:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Sell asset for $S_0$
+\item Invest proceeds at interest rate $r$ for time $T$
+\item Enter into forward contract to buy $1$ unit of asset
+\end{enumerate}
+At time $T$, cash has grown to $S_0 e^{rT}$. Investor repurchase asset for $F_0$, makes profit of $S_0 e^{rT} - F_0$.\\
+
+If the underlying asset provide income with present value of $I$ during life of forward, then
+\begin{equation}
+F_0 = (S_0 - I)e^{rT} \nonumber
+\end{equation}
+If $F_0 > (S_0 - I)e^{rT}$, investor may long asset and short forward. If $F_0 < (S_0 - I)e^{rT}$, investor may short asset and long forward. If short sales are not possible, investors owning the asset will sell the asset and long forward.\\
+
+If the underlying asset provides a known yield rather than income, with $q$ as the average yield, then the following strategy must generate zero profit to prevent arbitrage:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Borrow $S_0$ to buy one unit of asset at time $0$
+\item Enter into forward to sell $e^{qT}$ units of asset at time $T$ for $F_0$
+\item Close the forward by selling $e^{qT}$ units of the asset at time $T$
+\end{enumerate}
+Hence we have
+\begin{equation}
+S_0 e^{rT} = e^{qT} F_0 \nonumber 
+\end{equation}
+or
+\begin{equation}
+F_0 = S_0 e^{(r-q)T} \nonumber
+\end{equation}
+
+When a forward contract is first entered, the value is close to zero. Let $K$ be delivery price negotiated some time ago, with $T$ years delivery date, $r$ is $T$-year risk-free interest rate, $F_0$ is forward price if contract is negotiated today. Let $f$ be value of forward contract today. Then
+\begin{equation}
+f = (F_0 - K)e^{-rT} \nonumber
+\end{equation}
+
+In the case of stock indices, if $F_0 > S_0 e^{(r-q)T}$, profit can be made by buying stocks underlying the index at spot price and shorting the index futures contract. If $F_0 < S_0 e^{(r-q)T}$, short the stocks and long futures. This is known as \hlt{index arbitrage}.\\
+
+In the case of currencies, let $r_f$ be foreign risk-free rate in a foreign-denominated bond, $S_0$ be spot price of local currency in foreign currency, $F_0$ be forward or future price of local currency in foreign currency. Then the \hlt{interest rate parity} relation persists in the form
+\begin{equation}
+F_0 = S_0 e^{(r-r_f)T} \nonumber
+\end{equation}
+
+For commodities, let $U$ be present value of storage costs net of income during life of forward. Then
+\begin{equation}
+F_0 = (S_0 + U)e^{rT} \nonumber
+\end{equation}
+If storage costs are proportional to price of commodity, they can be treated as negative yield. Let $u$ be storage costs per annum as proportion of spot price net of any yield earned on asset. Then
+\begin{equation}
+F_0 = S_0 e^{(r+u)T} \nonumber
+\end{equation}
+If $F_0 > (S_0 + U)e^{rT}$, then investor may take advantage of arbitrage:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Borrow $S_0 + U$ at risk-free rate, purchase one unit of commodity and pay storage costs
+\item Short futures on one unit of commodity
+\end{enumerate}
+If $F_0 < (S_0 + U)e^{rT}$, then investor may take advantage of arbitrage:
+\begin{enumerate}[label=\arabic*.]
+\setlength{\itemsep}{0pt}
+\item Sell commodity, save storage costs, invest proceeds at risk-free interest rate
+\item Long futures contract
+\end{enumerate}
+
+Benefits from holding physical assets are \hlt{convenience yields}, such as by crude oil manufacturers. Let $y$ be the convenience yield, then
+\begin{equation}
+F_0 e^{yT} = (S_0 + U)e^{rT} \nonumber
+\end{equation}
+If storage costs per unit are a constant proportion of spot price, then $y$ is defined such that
+\begin{equation}
+F_0 e^{yT} = S_0 e^{(r+u)T} \nonumber
+\end{equation}
+Convenience yield reflects market expectation on future availability of the commodity. The greater the possibility that shortages will occur, the higher the commodity yield.
+
+The \hlt{cost of carry} measures storage cost plus interest paid to finance the asset less income earned:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Non-dividend paying stock: $r$, as no storage and income is earned
+\item Stock index: $r-q$, as income is earned at rate $q$ on asset
+\item Currency: $r - r_f$
+\item Commodity: $r-q+u$, where it provides income at rate $q$ and requires storage costs at rate $u$
+\end{enumerate}
 
 \subsubsection{Hedging with Futures}
 

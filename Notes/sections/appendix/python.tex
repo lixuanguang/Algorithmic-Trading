@@ -1,6 +1,6 @@
 \subsection{Python}
 
-Covering some very useful cases of Python code for development. Based on books by Allen \cite{downey_2016} and...
+Covering some very useful cases of Python code for development. Based on books by Allen \cite{downey_2016}, Luciano \cite{ramalho_2016}, and...
 
 \subsubsection{Directory and Files}
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 \end{lstlisting}
 If this code is ran as script, then '\_\_main\_\_' will run; if code is imported as module, then this is skipped.
 
-\subsubsection{Advanced Data Structures}
+\subsubsection{Python Data Model}
 
 Special methods are methods that are meant to be called by the Python interpreter, and is usually implicit. To invoke a special method, call the related builtin function (e.g., len, iter, str, etc.). These are faster than method calls. The methods can be emulated in classes as follows:
 \begin{enumerate}[label=\roman*.]
@@ -65,3 +65,10 @@ def __bool__(self):
 	return bool(self.x or self.y)
 \end{lstlisting}
 \end{enumerate}
+
+The overview of special methods in Python is as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{appendix/python/specialmethods}
+\caption{Special methods in Python}
+\end{figure}
