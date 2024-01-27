@@ -1,5 +1,7 @@
 \subsection{Forwards and Futures}
 
+Based on the book by John \cite{hull_2021}.
+
 \subsubsection{Pricing}
 
 To examine how forward prices and futures prices are related to spot price, we assume the following are true for some market participants:
@@ -214,5 +216,28 @@ Stock index hedging is typically used when the portfolio manager is uncertain ab
 
 If expiration date of hedge is later than delivery dates of all futures contracts that may be used, then the hedger may \hlt{stack and roll} by closing out one futures contract and taking the same position in a futures contract with a later delivery date.
 
+\subsubsection{Interest Rate Futures}
+
+The \hlt{day count} defines the way in which interest accrues, and is expressed as $X/Y$, where $X$ is the way in which number of days between two dates is calculated, $Y$ is total number of days in reference period.
+\begin{equation}
+\text{interest earned between two dates} = \frac{X}{Y} \times \text{interest earned in reference period} \nonumber
+\end{equation}
+The three common day count conventions used in United States are:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Actual/Actual (in period): for Treasury Bond
+\item $30/360$: for corporate and municipal bonds, assumes $30$ days a month and $360$ days a year
+\item Actual$/360$: for money market instruments
+\end{enumerate}
+
+Prices of money market instruments are quoted using discount rate, which is interest earned as a percentage of final face value. Let $P$ be quoted price, $Y$ be cash price, $n$ remaining life of Treasury bill in calendar days:
+\begin{equation}
+P = \frac{360}{n}(100 - Y) \nonumber
+\end{equation}
+
+Prices of treasury bonds are quoted in dollars and thirty-seconds of a dollar, i.e., $120$-$05$ or $120\frac{5}{32}$, which is a bond value of $\$120,156.25$. The quoted price is \hlt{clean price}, and the cash paid by purchaser is \hlt{dirty price}:
+\begin{equation}
+\text{cash price} = \text{quoted price} + \text{accrued interest since last coupon date} \nonumber
+\end{equation} 
 
 
