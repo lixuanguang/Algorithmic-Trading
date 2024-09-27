@@ -1,14 +1,15 @@
-\subsection{Research}
+\subsubsection{Research}
 
-The scientific method is as follows: 
+\begin{definition} \hlt{Scientific Method}
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
 \item Researcher observe a phenomenon in the market and construct a theory.
 \item Researcher seeks out information to test the theory.
 \item Researcher tests the theory, and with enough confidence, risk some capital on the validity of the theory.
 \end{enumerate}
+\end{definition}
 
-Idea generation comes from four sources:
+\begin{remark} \hlt{Sources of Alpha Idea Generation}
 \begin{enumerate}[label=\arabic*.]
 \setlength{\itemsep}{0pt}
 \item Observing the market, using the scientific method to test the theory
@@ -16,12 +17,9 @@ Idea generation comes from four sources:
 \item Migration of a researcher or portfolio manager from one quant shop to another.
 \item Lessons from activities of discretionary traders
 \end{enumerate}
+\end{remark}
 
-\subsubsection{Model Testing}
-
-\hlt{(In-Sample Training)} Train a model by finding optimal parameters over an in-sample period. The sample for fitting the model must be chosen in terms of appropriate length and breadth.\\
-
-\hlt{(Model Quality)} A model can be assessed on the following fronts:
+\begin{remark} \hlt{Model Quality Assessment}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Cumulative profit graph: if profit profile is not smooth, with long periods of inactivity, sharp losses and gains, then the model may have issues
@@ -36,7 +34,8 @@ Idea generation comes from four sources:
 \item Sensitivity to specific parameters: high quality strategy has small changes in outcomes from slight changes in parameters. Or else this may be a sign that model may be overfitted.
 \item Overfitting: plot a graph of parameter value vs function outcome; a good model has a flatter curve with no jumps.  Models that are parsimonious (less parameters) uses less assumptions, hence less overfitting.
 \end{enumerate}
+\end{remark}
 
-\hlt{(Out-of-Sample Testing)} Tests if model works in real-life. $R^2$ is typically used to test robustness of model. If out-of-sample $R^2$ is close to in-sample $R^2$, then the strategy is good. Rolling out-of-sample technique may be used to refresh the model over time. Look-ahead bias may be avoided by separating strategy research function from strategy selection function, and withholding a significant portion of database from researchers.\\
-
-\hlt{(Assumptions of Trading)} Overestimation of trading costs may cause portfolio to hold positions for longer than optimal, and underestimation may result in high portfolio turnover and bleed from trading costs. Assumptions on availability of short positions must also be made; hard-to-borrow lists must be taken into consideration.
+\begin{remark} \hlt{Other Considerations in Model Testing}\\
+Overestimation of trading costs may cause portfolio to hold positions for longer than optimal, and underestimation may result in high portfolio turnover and bleed from trading costs. Assumptions on availability of short positions must also be made; hard-to-borrow lists must be taken into consideration.
+\end{remark}
