@@ -1,11 +1,46 @@
-\subsection{Big Data Overview}
-
-
 \subsubsection{Data Taxonomy}
 
-Data availability, storage, management, and cleaning are the core of any research environment.\\
+A quick overview of data used in systematic trading.\\
 
-Reliable \hlt{reference data} is key foundation of a robust quantitative strategy development, with following data:
+Four essential types of financial data
+\begin{flushleft}
+\begin{tabularx}{\textwidth}{X|X|p{13em}|X}
+\hline
+\rowcolor{gray!30}
+Fundamental Data & Market Data & Analytics & Alternative Data \\
+\hline
+\xxx Assets 
+\xxx Liabilities
+\xxx Sales
+\xxx Costs/Earnings
+\xxx Macro Variables
+\xxx $\cdots$
+&
+\xxx Price/Yield/IV
+\xxx Volume
+\xxx Dividend/Coupons
+\xxx Open Interest
+\xxx Quotes/Cancellations
+\xxx Aggressor Side
+\xxx $\cdots$
+&
+\xxx Analyst Recommendation
+\xxx Credit Ratings
+\xxx Earnings Expectations
+\xxx News Sentiment
+\xxx $\cdots$
+&
+\xxx Satellite/CCTV
+\xxx Google Searches
+\xxx Twitter/Chats
+\xxx Metadata
+\xxx $\cdots$ \\
+\hline
+\end{tabularx}
+\end{flushleft}
+
+
+\begin{definition} \hlt{Reference Data}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Trading Universe: evolving daily to incorporate new listings, de-listings etc. Knowing when a particular stock no longer trades is important to avoid survivor bias.
@@ -56,8 +91,9 @@ Stock-specific releases such as earnings calendars, specialised sector events (f
 \item Composite Assets: ETFs, Indexes, Mutual Funds etc. May be used to achieve desired exposures, or as cheap hedging instruments, and provide arbitrage opportunities when they deviate from NAV. To maintain information such as time series of their constituents and value of any cash component, divisor used to translate NAV into quoted price, constituent weights.
 \item Latency tables: for higher frequency trading strategies. Contains distribution of latency between different data centres for more efficient order routing, and reordering data that are recorded in different locations.
 \end{enumerate}
+\end{definition}
 
-There are different details in the \hlt{market data} feed, as follows:
+\begin{definition} \hlt{Market Data Feed}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Level I Data (Trade and BBO Quotes): trades and top of book quotes. Enough to reconstruct Best Bid and Offer (BBO). Also contains information in form of trade status (cancelled, reported late etc), trade and quote qualifiers (odd lot, normal trade, auction trade, Intermarket Sweep, average price reporting, on which exchange etc). May be used to analyse sequence of events and decide if a given print should be used to update the last price and total volume traded at a point in time.
@@ -88,8 +124,9 @@ Minimum display quantity is 100, amount replenished from reserve size when it fa
 Using these data, we may model: the pattern of inter-arrival times of various events; arrival and cancellation rates as a function of distance from nearest touch price; arrival and cancellation rates as a function of other information, such as in the queue on either side of the book, order book imbalance etc.\\
 Once modelled, we may analyse: the impact of market order on limit order book; chances for limit order to move up the queue from given entry position; probability of earning the spread; expected direction of price movement over a short horizon.
 \end{enumerate}
+\end{definition}
 
-Most quantitative strategies rely on \hlt{binned data}, such as the following daily statistics:
+\begin{definition} \hlt{Binned Data}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Open, High, Low, Close (OHLC) and Previous Close Price: indication on trading activity and intraday volatility. Distance traveled between lowest and highest points is indication of market sentiment. Previous close has to be adjusted for corporate actions and dividends.
@@ -103,7 +140,9 @@ Most quantitative strategies rely on \hlt{binned data}, such as the following da
 \item Options Data: information on position of traders through open interest and Greeks.
 \item Asset Class Specific: yield/benchmark rates (repo, 2y, 10y, 30y), CDS spreads, US Dollar Index
 \end{enumerate}
-We also consider data for granular intraday microstructure activity:
+\end{definition}
+
+\begin{definition} \hlt{Granular Intraday Microstructure Activity}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Number and Frequency of Trades: proxy for activity level, and how continuous it is. Low number of trades mean harder execution, and may be more volatile
@@ -114,7 +153,7 @@ We also consider data for granular intraday microstructure activity:
 \item Trade size (average, median): to identify intraday liquidity opportunities when examining volume available in the order book.
 \item Ticking time (average, median): representation of how often one should expect changes in the order book first level. For execution algorithms for which the frequency of updates (adding/cancelling child orders, re-evaluating decisions etc.) should commensurate with characteristics of the traded instrument.
 \end{enumerate}
-Daily distribution of these intraday variables can be used as start of day estimates and updated intraday with online Bayesian updates.\\
+Daily distribution can be used as start of day estimates and updated intraday with online Bayesian updates.\\
 Last group of daily data is derived from previous two groups but stored pre-computed to save time during research phase, or to be used as normalising values:
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
@@ -123,10 +162,10 @@ Last group of daily data is derived from previous two groups but stored pre-comp
 \item Beta with respect to index or sector (plain beta, or asymmetric up-days/down-days beta)
 \item Correlation matrix
 \end{enumerate}
+When binning data, this may be grouped into bins ranging from a few seconds to 30 minutes. Minute bar data are used for volume and spread profiles to prevent introducing excess noise due to market friction.
+\end{definition}
 
-When binning data, this may be grouped into bins ranging from a few seconds to 30 minutes. Minute bar data are used for volume and spread profiles to prevent introducing excess noise due to market friction.\\
-
-Some \hlt{fundamental data} and other data sets which may be considered are as follows:
+\begin{definition} \hlt{Fundamental Data and Other Data}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
 \item Key Ratios: Earnings Per Share (EPS), Price-to-Earning (P/E), Price-to-Book (P/B), etc. 
@@ -134,5 +173,6 @@ Some \hlt{fundamental data} and other data sets which may be considered are as f
 \item Earnings data: estimations by research analysts provide quarterly earning estimates which can be used as indication of performance of stock before actual value is published
 \item Holders: sudden changes in ownership indicate changes in sentiment by sophisticated investor
 \item Insiders Purchase/Sale: indicator of future stock price moves from group of people who have access to best possible information about the company
-\item Credit Ratings: credit downgrades resulting in higher funding costs in the future have negative impact on equity prices
+\item Credit Ratings: credit downgrades resulting in higher funding costs have negative impact on equity prices
 \end{enumerate}
+\end{definition}
