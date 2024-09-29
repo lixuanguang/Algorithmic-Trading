@@ -2,6 +2,77 @@
 
 A quick overview of data used in systematic trading.
 
+\begin{flushleft}
+Four essential types of financial data
+\begin{tabularx}{\textwidth}{X|X|p{13em}|X}
+\hline
+\rowcolor{gray!30}
+Fundamental Data & Market Data & Analytics & Alternative Data \\
+\hline
+\xxx Assets 
+\xxx Liabilities
+\xxx Sales
+\xxx Costs/Earnings
+\xxx Macro Variables
+\xxx $\cdots$
+&
+\xxx Price/Yield/IV
+\xxx Volume
+\xxx Dividend/Coupons
+\xxx Open Interest
+\xxx Quotes/Cancellations
+\xxx Aggressor Side
+\xxx $\cdots$
+&
+\xxx Analyst Recommendation
+\xxx Credit Ratings
+\xxx Earnings Expectations
+\xxx News Sentiment
+\xxx $\cdots$
+&
+\xxx Satellite/CCTV
+\xxx Google Searches
+\xxx Twitter/Chats
+\xxx Metadata
+\xxx $\cdots$ \\
+\hline
+\end{tabularx}
+\end{flushleft}
+
+\begin{remark} \hlt{Fundamental Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Data published is indexed by last date included in report, which precedes date of release.
+\item Data is often backfilled or re-instated, and data vendor may overwrite initial values with corrections.
+\item Data is extremely regularised and low frequency.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Market Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Raw feed contains unstructured information, such as FIX messages (allow full construction of trading book), or full collection of BWIC (bids wanted in competition) responses.
+\item FIX data is not trivial to process, $\sim 10$TB generated on daily basis
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Analytics Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Derivative data as processed based on original source. Signal already extracted from the original source.
+\item Costly, methodology used in production may be biased or opaque.
+\end{enumerate}
+\end{remark}
+
+\begin{remark} \hlt{Alternative Data Characteristics}
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item Produced by individuals, business processes, and sensors.
+\item Primary information that has not made it to other sources.
+\item Cost and privacy concerns. May be useful if it annoys data infrastructure team.
+\end{enumerate}
+\end{remark}
+
 \begin{definition} \hlt{Reference Data}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
