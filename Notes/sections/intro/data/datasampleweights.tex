@@ -1,0 +1,8 @@
+\subsubsection{Data Sample Weights}
+
+Note that most of ML literature is based on IID assumption, and ML applications usually fail in finance as these assumptions are unrealistic in the case of financial time series.
+
+\begin{remark} \hlt{Overlapping Outcomes}\\
+Let label $y_i$ be assigned to an observed feature $X_i$, where $y_i = f([t_{i,0}, t_{i,1}])$ is a function over the interval. When $t_{i,1} > t_{j,0}$ and $i < j$, then $y_j$ will depend on common return $r_{t_{j,0}, \min\{t_{i,1}, t_{j,1}\}}$ (over interval $[t_{j,0}, \min\{t_{i,1}, t_{j,1}\}]$). The series of labels $\{y_i \}_{i-1, \ldots, J}$ are not IID whenever there is overlap between any two consecutive outcomes, i.e., $\exists i \ \vert \ t_{i,1} > t_{i+1, 0}$. If this is resolved by restricting bet horizon to $t_{i,1} \leq t_{i+1, 0}$, there is no overlap, but this will lead to coarse models where features sampling frequency is limited by horizon used to determine outcome.\\
+To investigate outcomes that lasted a different duration, samples have to be resampled with different frequency. In addition, if path-dependent labelling technique is to be applied, the sampling frequency will be subordinated to first barrier's touch. Hence, to use $t_{i,1} > t_{i+1, 0}$, leading to overlapping outcomes.
+\end{remark}
