@@ -1,0 +1,9 @@
+\subsubsection{Regularisation for Deep Learning}
+
+\begin{definition} \hlt{Regularisation} refers to adding a parameter norm penalty $\Omega(\bm{\theta})$ to the objective function $J$. The regularised objective function is then
+\begin{equation}
+\tilde{J}(\bm{\theta}; \bm{X}, \bm{y}) = J(\bm{\theta}; \bm{X}, \bm{y}) + \alpha \Omega(\bm{\theta}) \nonumber
+\end{equation}
+where $\alpha in [0, \infty)$ is a hyper-parameter that weights the contribution of norm penalty term.\\
+For neural networks, the parameter norm penalty $\Omega$ is chosen such that it penalises only the weights of the affine transformation at each layer and leaves the biases un-regularised.
+\end{definition}
