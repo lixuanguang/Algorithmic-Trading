@@ -1,95 +1,98 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Algorithmic Trading Main Document
+% 
+% This document assembles the various sections of the Algorithmic Trading 
+% notes. It imports common settings from the base preamble and then inputs
+% content from individual topic files.
+%
+% Author: Arthur Li
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Pass options to the xcolor package for table support
 \PassOptionsToPackage{table}{xcolor}
 
+% Document class: A4 paper with an 8pt font size.
 \documentclass[a4paper,8pt]{article}
+
+% Use a plain page style (no headers/footers beyond page numbers)
 \pagestyle{plain}
 
+% Import the base preamble (packages, macros, environments, etc.)
 \input{sections/base}
 
+% Set the title and author metadata
 \title{Algorithmic Trading}
 \author{Arthur Li}
 
 \begin{document}
-\pagenumbering{roman}
-\maketitle
-\bibliographystyle{chicago}
 
-\newpage
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Front Matter
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\tableofcontents
+    % Use Roman page numbering for front matter
+    \pagenumbering{roman}
 
-\newpage
-\pagenumbering{arabic}
+    % Title Page
+    \maketitle
 
-\newpage
+    % Bibliography style (Chicago)
+    \bibliographystyle{chicago}
 
-\input{sections/intro/intro}
+    % Table of Contents
+    \newpage
+    \tableofcontents
 
-\newpage
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Main Content
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{sections/math/overallstruct}
+    % Switch to Arabic numbering for main content pages
+    \newpage
+    \pagenumbering{arabic}
 
-\newpage
+    % Introduction Section
+    \newpage
+    \input{sections/intro/intro}
 
-\input{sections/microstruct/overallstruct}
+    % Mathematical Overview Section
+    \newpage
+    \input{sections/math/overallstruct}
 
-\newpage
+    % Microstructure Trading Section
+    \newpage
+    \input{sections/microstruct/overallstruct}
 
-\input{sections/equities/eqtrade}
+    % Equities Trading Section
+    \newpage
+    \input{sections/equities/eqtrade}
 
-\newpage
+    % Fixed Income Trading Section
+    \newpage
+    \input{sections/fixedincome/fitrade}
 
-\input{sections/fixedincome/fitrade}
+    % Derivatives Trading Section
+    \newpage
+    \input{sections/derivatives/dertrade}
 
-\newpage
+    % Forex Trading Section
+    \newpage
+    \input{sections/forex/forextrade}
 
-\input{sections/derivatives/dertrade}
+    % Commodities Trading Section
+    \newpage
+    \input{sections/commodities/commotrade}
 
-\newpage
+    % Appendix Section
+    \newpage
+    \input{sections/appendix/appindex}
 
-\input{sections/forex/forextrade}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    % Bibliography
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newpage
-
-\input{sections/commodities/commotrade}
-
-\newpage
-
-\input{sections/appendix/appindex}
-
-
-%{\color{white}space}
-%\begin{enumerate}[label=\roman*.]
-%\setlength{\itemsep}{0pt}
-%\item
-%\end{enumerate}
-
-%\raggedright
-
-%\begin{figure}[H]
-%\centering
-%\includegraphics[scale=0.4]{dihedralgroups}
-%\caption{Example of an equilateral triangle as a Dihedral Group $D_6$}
-%\end{figure}
-
-%\begin{lstlisting}[language=Python]
-%\end{lstlisting}
-
-%\begin{flushleft}
-%\begin{tabularx}{\textwidth}{p{9em}|p{14.5em}|X}
-%\hline
-%\rowcolor{gray!30}
-%Instrument & Other Names & Description
-%\hline
-%A & 
-%\xxx Restricted stock awards
-%& B. \\
-%\hline
-%\end{tabularx}
-%\end{flushleft}
-	
-\newpage
-
-\bibliography{references}
+    \newpage
+    \bibliography{references}
 
 \end{document}
 	
