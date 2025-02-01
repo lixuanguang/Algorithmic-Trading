@@ -1,47 +1,70 @@
-\subsubsection{Alpha models}
+\subsubsection{Alpha Models Overview}
 
-Theory-driven models tests theories of why markets behave in a manner, and see if they can be used to predict the future. Strategies utilising price-related data are trend and mean reversion; strategies utilising fundamental data are value/yield, growth and quality. Usually more than one model is used in combination.
+Alpha models are designed to test and exploit theories about market behavior. These fall into two categories:
+\begin{itemize}
+  \item \textbf{Theory-Driven Models}, which derive signals from economic or behavioral principles, and
+  \item \textbf{Data-Driven Models}, which rely on complex data mining and statistical techniques.
+\end{itemize}
+In practice, practitioners often blend several models together to capture multiple facets of market dynamics.
 
-\begin{definition} \hlt{Theory Driven Models}
+\begin{definition} \hlt{Theory-Driven Models}\\
+Theory-driven models use fundamental principles to explain and predict market behavior. These include:
 \begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Trend Following: markets move in given direction long enough that the trend can be identified. As more data support the bull/bear thesis in an uncertain market, more market participants will adopt the same thesis and hence move the asset price to a new equilibrium.\\
-Moving average crossover indicator strategy has less than one point of return for every point of downside risk taken, as market behaviour are unstable and episodic.
-\item Mean Reversion: markets move in opposite direction to the prevailing trend. Short-term imbalances between buyers and sellers due to liquidity forces prices to move abruptly in one direction, which increases probability of trend reversion as liquidity issue is resolved.\\
-Statistical arbitrage bets on convergence of prices of similar stocks whose prices have diverged.\\
-Longer-term trends can occur despite smaller oscillations around these trends occurring in the shorter term, hence both strategies may be used in conjunction.
-\item Value/Yield:  value strategies uses ratios of fundamental factor against the price of the instrument, inverted to keep the ratio consistent. The higher the yield, the cheaper the instrument.\\
-Buying undervalued security and selling overvalued security is a \hlt{carry trade}. The difference between yield received and yield paid is the \hlt{carry}.\\
-\hlt{Quant Long Short (QLS)} ranks stocks by attractiveness based on various factors such as value, then buy the higher-ranked stocks while shorting the lower-ranked stocks.
-\item Growth: make predictions based on asset's expected or historically observed level of economic growth. Forward-looking growth expectations are typically used as a metric.\\
-Growth is trending, and strongest growers are becoming more dominant relative to competitors. Macro growth factors may be used on foreign exchange, while micro growth factors may be used on companies.
-\item Quality: All else being equal, it is better to long high quality and short low quality. Capital safety is important. Factors include earnings quality, equity-to-debt ratios etc.
+  \setlength{\itemsep}{0pt}
+  \item \textbf{Trend Following:}  
+  Assumes that once a market trend is established, it will persist long enough to be identified and exploited. As supporting data accumulate for a bullish or bearish outlook, more participants join the trend, shifting the asset price to a new equilibrium. Note that strategies such as moving average crossovers often yield less than a one-to-one return relative to the downside risk because market behavior can be unstable and episodic.
+
+  \item \textbf{Mean Reversion:}  
+  Based on the idea that asset prices will revert to their historical average after deviating. Short-term liquidity imbalances can force prices to move abruptly, but these are typically followed by corrective movements. Statistical arbitrage, which bets on the convergence of prices between similar stocks that have diverged, is a common application of this strategy.
+
+  \item \textbf{Value/Yield:}  
+  Evaluates securities by comparing fundamental ratios to their market price (often using an inverted ratio for consistency). A higher yield indicates a relatively cheaper instrument. This approach underpins \hlt{carry trades}, where investors buy undervalued assets and sell overvalued ones. In \hlt{Quant Long Short (QLS)} strategies, stocks are ranked on factors like value, and long positions are taken in the most attractive stocks while shorting the least attractive.
+
+  \item \textbf{Growth:}  
+  Focuses on the future or historical growth potential of an asset. Forward-looking growth expectations are central, with the belief that companies with strong growth will increasingly dominate their sectors. Macro-level growth factors can drive foreign exchange decisions, while micro-level factors are key for individual companies.
+
+  \item \textbf{Quality:}  
+  Emphasizes capital preservation by favoring high-quality assets—those with robust earnings, sound balance sheets, and low leverage—over lower quality ones.
 \end{enumerate}
 \end{definition}
 
-Data-driven models are more difficult to understand, with more complicated mathematics. Relies on data mining, more technically challenging and far less widely practiced. Typically more used in high-frequency space, as they can discern how market behaves without caring about the economic theory or rational.
+While theory-driven models incorporate clear economic rationale, \textbf{data-driven models} use advanced statistical and machine learning methods to extract patterns directly from data. These techniques, though more mathematically complex and often applied in high-frequency environments, can identify subtle market signals without relying on traditional economic theory.
 
 \begin{method} \hlt{Strategy Parameters}\\
-An implementation approach requires a forecast target, time horizon, bet structure, investment universe, model specification, and run frequency.
+Implementing an alpha strategy requires careful specification of several parameters:
 \begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Forecast Target: models may forecast direction, magnitude, duration of move, and may include probability into the forecast. Signal strength is of importance, defined by a larger expected return and/or higher likelihood of return. A higher level of signal strength results in a bigger bet taken on the position.
-\item Time Horizon: models may have forecast horizons ranging from microseconds to years. There are more variability between short-term and long-term strategies, as short-term strategies are making very large number of trades compared to long-term strategies.
-\item Bet Structure: models can be made to forecast an instrument relative in itself or to others. For relative forecasts, smaller clusters (pairs) or larger clusters (sectors) may be used. For pairs, few assets can be compared precisely and directly. Large cluster grouping may eliminate impact of general movement of the sector and hence focus on the relative movement of stocks within the sector, allowing for clearer distinction between group behaviour and idiosyncratic behaviour. Clusters may be created either via statistical methods or using heuristics (i.e., fundamentally defined industry groups).\\
-Statistical methods may be fooled by data, leading to bad grouping. Heuristic grouping may be imprecise for conglomerates, and may be too rigid. Relative alpha strategies tend to exhibit smoother returns during normal times than intrinsic alpha strategies, but may face incorrect groupings during stressful periods. This may be mitigated by utilising several grouping techniques in concert.
-\item Investment Universe: choices made on geography, asset class, instrument class, and exclusions. Liquidity is preferred so estimations of transaction costs are reliable. Large quantities of high quality data is required, which is found in highly liquid and developed markets. Instruments with consistent behaviour is preferred, hence biotech stocks are excluded due to sudden, violent price changes. Hence, the most common asset classes and instruments modelled are common stocks, futures (on bonds and equity indices) and forex.
-\item Model Specification: focuses on definition of the strategy mathematically, and may be the source of alpha. Specification details in terms of machine learning or data mining techniques are also defined, to assist in fitting models to the data and setting parameter values. Refitting frequency is also defined to refresh the model and make it adapt to current market conditions; may lead to greater risk of overfitting.
-\item Run Frequency: defined from monthly to real time frequency. Increasing frequency of runs lead to greater number of transactions and hence higher transaction costs, and risk of moving portfolio based on noisy data. Less frequency of runs lead to smaller number of larger-sized trades, hence may move the market with block trades; may also miss opportunities to trade at more favourable prices.
+  \setlength{\itemsep}{0pt}
+  \item \textbf{Forecast Target:}  
+  Define what the model predicts – whether it is the direction, magnitude, duration of a move, or even the probability of a particular outcome. A stronger signal (in terms of higher expected return or likelihood) typically warrants a larger position.
+
+  \item \textbf{Time Horizon:}  
+  Forecast horizons can range from microseconds to years. Short-term strategies usually involve a high frequency of trades, whereas long-term strategies trade less frequently.
+
+  \item \textbf{Bet Structure:}  
+  Models may generate absolute forecasts or relative forecasts (comparing one instrument to another). For relative forecasts, grouping assets into pairs or clusters (e.g., sectors) is common. While pair trading allows for precise comparisons, larger groupings can isolate idiosyncratic movements from overall market trends. Grouping can be achieved through statistical methods or heuristic industry classifications, each with its own tradeoffs.
+
+  \item \textbf{Investment Universe:}  
+  Selection is based on factors such as geography, asset class, and instrument type. High liquidity is essential for reliable transaction cost estimation and consistent behavior. Consequently, common stocks, futures (on bonds and equity indices), and forex are frequently modeled, while more volatile instruments (e.g., certain biotech stocks) are typically excluded.
+
+  \item \textbf{Model Specification:}  
+  This defines the mathematical structure of the strategy, including any machine learning or data mining techniques used. Regular model refitting is necessary to adapt to changing market conditions, although it may increase the risk of overfitting.
+
+  \item \textbf{Run Frequency:}  
+  This parameter sets how often the model is executed, ranging from monthly to real time. A higher run frequency increases transaction costs and sensitivity to noise, whereas a lower frequency can lead to larger trades that might themselves influence market prices.
 \end{enumerate}
 \end{method}
 
 \begin{method} \hlt{Blending of Models}\\
-Most common approaches are linear models, nonlinear models, and machine learning models. If models are not combined, then several portfolios are constructed based on output from each model, then combined using portfolio construction techniques. The best method depends on the model.
+Integrating multiple alpha signals can be accomplished using different approaches:
 \begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Linear Models: require independence of factors, and each factor to be additive. To determine the weight of each alpha factor, multiple regression techniques may be used.
-\item Nonlinear Models: used when factors are not independent, or the relationship changes over time. Conditional models base the weight of one factor on the reading of another factor. Rotational models assign weights of factors that fluctuate over time based on updated calculations of the various signal's weights, giving higher weights to factors with better performance recently.
-\item Machine Learning Models: developing machine learning strategies takes as much effort to produce one true investment strategy as to produce a hundred. The complexities include data curation and processing, HPC infrastructure, software development, feature analysis, execution simulations, backtesting etc.\\
-Decades ago, macroscopic alpha based on simple tools like econometrics are common, but this is quickly diminishing. Microscopic alpha however, becomes more abundant, but requires heavy ML tools.
+  \setlength{\itemsep}{0pt}
+  \item \textbf{Linear Models:}  
+  Assume that factors are independent and additive. Multiple regression techniques are typically employed to determine the weight of each factor.
+
+  \item \textbf{Nonlinear Models:}  
+  Used when factor relationships are interdependent or evolve over time. Conditional models adjust the weight of one factor based on the performance of another, while rotational models dynamically shift weights according to recent performance metrics.
+
+  \item \textbf{Machine Learning Models:}  
+  Although developing machine learning strategies requires substantial effort in data curation, infrastructure, feature engineering, and backtesting, these models can capture micro-level signals that traditional econometric methods may miss. Despite the complexity, ML approaches are becoming more prevalent as computational resources improve.
 \end{enumerate}
 \end{method}

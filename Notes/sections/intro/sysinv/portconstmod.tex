@@ -1,41 +1,36 @@
 \subsubsection{Portfolio Construction Models}
 
-Comes in two major forms: rule-based, optimisers. Rule-based models are based on heuristics, can be exceedingly simple or rather complex, and derived from human experience (trial and error). Optimisers comprises of an objective function and uses algorithms to reach the end goal.
+Portfolio construction models generally come in two major forms: rule-based models and optimisers. Rule-based models are built on heuristics—they can be very simple or quite complex—and are often derived from human experience and trial-and-error. In contrast, optimiser-based models rely on an objective function and use algorithmic methods to achieve the desired portfolio outcome.
 
 \begin{definition} \hlt{Rule-Based Models}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Equal Position Weighting: used if portfolio manager believes that if a position is good enough to own, no other information is needed in determining its size. Strength of signal is not used as input in weighting.\\
-Model assumes that there is sufficient statistical strength and power to predict not only direction but also magnitude relative to other forecasts in the portfolio. Portfolio takes few large bets on 'best' forecast, many smaller bets on less dramatic forecasts; may take excess risk in an idiosyncratic event on a seemingly attractive position, resulting in adverse selection bias.
-\item Equal Risk Weighting: adjust position sizes inversely to volatilities or a measure of risk. More volatile positions given smaller allocations, less volatile positions given larger allocations.\\
-When unit of risk is equalised, it is almost always a backward-looking measurement such as volatility. If volatility changes with time, then model will be misled.
-\item Alpha-Driven Weighting: position size based primarily on alpha model. Alpha signal determines size of position, but usually with size limits. Constraints used also includes limits on size of total bet on a group. May also have a function that relates the magnitude of forecast to size of position.\\
-If model used in futures trend following, might suffer sharp drawdowns. Reliance on accuracy of alpha.
-\item Decision-Tree Weighting: decision path to arrive at the allocation for given instrument, depending on type of alpha model and type of instrument. Constraints may include percentage limits for allocation.\\
-Model size grows dramatically if more alpha models or mode types of positions are included.
+\item \textbf{Equal Position Weighting:} Applied when portfolio manager believes that once a position is deemed good enough to own, no further information is needed to decide its size. Strength of signal does not influence the weighting. Model assumes there is enough statistical power to predict not only direction but also magnitude relative to other forecasts within the portfolio. As a result, portfolio may place a few large bets on the strongest forecast and many smaller bets on less dramatic signals; however, this can lead to taking excessive risk in an idiosyncratic event on an apparently attractive position, which may cause adverse selection bias.
+\item \textbf{Equal Risk Weighting:} Strategy adjusts position sizes inversely to their volatility or another measure of risk. More volatile positions has smaller allocations, whereas less volatile positions has more allocation. Because the unit of risk is typically a backward-looking measure, such as historical volatility, if volatility shifts over time, the model might be misled.
+\item \textbf{Alpha-Driven Weighting:} Position size is primarily determined by alpha model. Alpha signal guides size of position, usually subject to predetermined size limits. Additional constraints often include limits on the total bet size within a group. A function may also be used to relate the forecast's magnitude to the position size. In futures trend following, it might suffer from sharp drawdowns, as it heavily relies on the accuracy of the alpha signals.
+\item \textbf{Decision-Tree Weighting:} A decision-making process is used to determine the allocation for each instrument based on both the type of alpha model and the type of instrument. Constraints, such as percentage limits for allocation, may also be imposed. However, as more alpha models or instrument types are introduced, the decision tree can grow significantly in complexity.
 \end{enumerate}
+
 \end{definition}
 
 \begin{remark} \hlt{Optimisers Models Parameters}\\
-Harry Markowitz's mean variance optimisation (MVO) as the pioneer model. Models are based on principles of modern portfolio theory (MPT). Inputs include asset expected return (mean), asset variance, expected correlation matrix. Other inputs include size of portfolio in currency terms, desired risk level (volatility or expected drawdown), and other constraints such as liquidity, universe limits.\\
-Model uses an objective function and an algorithm to seek the goal, usually maximising return of portfolio relative to volatility of portfolio returns.
+The pioneering model in optimiser-based portfolio construction is Harry Markowitz's mean variance optimisation (MVO), which is founded on the principles of modern portfolio theory (MPT). The main inputs to these models include the expected return (mean), asset variance, and the expected correlation matrix. Other inputs typically involve the portfolio’s size in currency terms, the desired risk level (such as volatility or expected drawdown), and additional constraints like liquidity and universe limits. Model uses an objective function paired with an algorithm that seeks to maximise the portfolio’s return relative to its volatility.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Expected Return: alpha models as basis of expected return, which also includes expected direction.
-\item Expected Volatility: stochastic volatility forecasting methods is commonly used, as volatility may have high and low periods, with occasional jumps. GARCH model is most used.
-\item Expected Correlation: as instrument correlations are not stable over time, it is more appropriate to group assets together before computing correlation within the group.
+\item \textbf{Expected Return:} Derived from alpha models, this input captures not only the direction but also the magnitude of the expected returns.
+\item \textbf{Expected Volatility:} Typically estimated using stochastic volatility forecasting methods (i.e., GARCH), this input accounts for periods of high and low volatility along with occasional jumps.
+\item \textbf{Expected Correlation:} Given that instrument correlations can fluctuate over time, it is often more effective to group similar assets together before calculating the correlations within each group.
 \end{enumerate}
 \end{remark}
 
 \begin{method} \hlt{Optimisation Techniques}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Unconstrained Optimisation: most basic form with no constraints. Might provide a single-instrument portfolio, where all money will be invested in instrument with highest risk-adjusted return.
-\item Constrained optimisation: constraints include position limits, limits on various groupings of instruments. Might result in constraints driving the portfolio construction more than the optimiser.
-\item Black-Litterman Optimisation: blends investor expectations with a degree of confidence about those expectations, and these with historical precedent evident in the data. Adjusts historically observed correlation levels by utilising investor's forecast of return for the various instruments.
-\item Grinold and Kahn's Approach: builds a portfolio of signals, instead of sizing positions. To build factor portfolios, each of which are usually rule-based portfolios based on a single type of alpha forecast. Each portfolio backtested, then series of returns are then treated as instruments of a portfolio by the optimiser.\\
-Number of factor portfolios is more manageable, usually not more than 20. What is optimised is then a handful of factor portfolios. The model allows for inclusion of risk model, transaction cost model, portfolio size, and risk targets as inputs.
-\item Resampled Efficiency: to improve the inputs to optimisation by addressing oversensitivity to estimation error. To resample data using Monte Carlo simulation to reduce estimation error in inputs to the optimiser.
-\item Data-Mining Approaches: machine learning techniques such as supervised learning or genetic algorithms used, as MVO involves searching many possible portfolios to find the best.
+\item \textbf{Unconstrained Optimisation:} Most basic form of optimisation with no constraints applied. Might result in a portfolio that invests all available capital in a single instrument—specifically, the one with the highest risk-adjusted return.
+\item \textbf{Constrained Optimisation:} Constraints such as position limits or limits on groups of instruments are applied. These constraints can sometimes have a greater influence on the portfolio construction than the optimiser itself.
+\item \textbf{Black-Litterman Optimisation:} This combines investor forecasts with a measure of confidence in those forecasts, blending them with historical data. It adjusts the historically observed correlation levels by incorporating the investor’s return expectations for various instruments.
+\item \textbf{Grinold and Kahn's Approach:} Instead of directly sizing positions, this constructs a portfolio of signals. It creates factor portfolios, each typically based on a single type of alpha forecast. After backtesting these factor portfolios, their return series are then treated as instruments for the optimiser. Since the number of factor portfolios is usually limited (typically no more than 20), the optimisation problem becomes more manageable. This method also allows for the inclusion of a risk model, transaction cost model, overall portfolio size, and risk targets as additional inputs.
+\item \textbf{Resampled Efficiency:} Seeks to improve the input parameters for optimisation by reducing the oversensitivity to estimation errors. It does so by employing Monte Carlo simulation to resample data, thereby mitigating the estimation error in the inputs.
+\item \textbf{Data-Mining Approaches:} Leverage machine learning techniques—such as supervised learning or genetic algorithms—to explore a wide range of potential portfolios and identify the optimal one.
 \end{enumerate}
 \end{method}

@@ -3,6 +3,8 @@
 % This file serves as a central preamble with package imports, custom macros,
 % theorem environments, and styles for algorithms and code listings.
 %
+% (Adjust or remove the \documentclass declaration if this file is intended
+%  to be included in another document.)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % -----------------------------
@@ -73,6 +75,13 @@
 \usepackage{tikz-cd}         % Commutative diagrams
 \usepackage{rotating}        % Rotated objects
 \usepackage{float}           % Float placement
+\usetikzlibrary{calc}        % Added TikZ calc library for coordinate calculations
+
+% -----------------------------
+% TikZ and its Libraries
+% -----------------------------
+\usepackage{tikz}
+\usetikzlibrary{positioning} % Added to support "below=of" syntax
 
 % -----------------------------
 % Miscellaneous Packages
@@ -80,13 +89,6 @@
 \usepackage{xparse}          % For defining robust commands
 \usepackage{enumitem}        % For customizing list layouts
 \usepackage{makecell}        % For enhanced table cells
-\usepackage{tikz}            % For custom graphics
-
-% -----------------------------
-% Table of Contents & Section Numbering
-% -----------------------------
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Custom Math Commands and Shortcuts
@@ -255,3 +257,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % End of Base LaTeX Template
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

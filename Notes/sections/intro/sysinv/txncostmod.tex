@@ -1,23 +1,23 @@
 \subsubsection{Transaction Cost Models}
 
-Trade is made only if it increases the odds or magnitude of return (from alpha model), or if it decreases the odds or magnitudes of loss (from risk model). However, this improvement should be higher than cost of trading. The transaction cost model is not designed to minimise cost of trading, only to inform portfolio construction engine the cost of making any given trade.
+A trade is executed only if it improves the probability or magnitude of a return (as predicted by alpha model) or reduces likelihood or extent of a loss (as determined by risk model). However, this improvement must be greater than cost of trading. Note that transaction cost model is intended not to minimize trading costs directly, but rather to inform the portfolio construction engine of the costs associated with executing a given trade.
 
 \begin{remark} \hlt{Transaction Cost Components}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Commissions and Fees: paid to brokerages (access to other market participants), exchanges (improved transaction security) and regulators (operational infrastructure) for the services provided. The bank's infrastructure is used by quants, where the brokerage commissions are rather small on a per-trade basis.\\
-Brokers also collect clearing and settlement fees. Clearing is the activity involving regulatory reporting and monitoring, tax handling, and handling failure, taken place in advance of settlement. Settlement is the delivery of securities in exchange for payment in full.
-\item Slippage: the change in price between the time the quant system decides to transact and the time when the order is at the exchange for execution. Trend-following strategies suffer most from slippage as assets are already moving in desired direction; mean-reverting strategies suffer the least from slippage. The lower the latency to market, the smaller the slippage. The more volatile an asset, the bigger the slippage.
-\item Market Impact: measures how much an order moves the market by its demand for liquidity. The impact of the trade on the market is unknown until the trade has already been completed. There may also be interaction between slippage and market impact (i.e., selling when a stock is trending upwards).
+    \item \textbf{Commissions and Fees:} These are payments made to brokerages (for accessing other market participants), exchanges (for enhanced transaction security), and regulators (for maintaining operational infrastructure). In the context of quantitative trading, where bank infrastructure is utilized, brokerage commissions tend to be minimal on a per-trade basis.\\[1mm]
+    Brokers also charge clearing and settlement fees. \emph{Clearing} involves activities such as regulatory reporting and monitoring, tax handling, and failure management, all of which occur before settlement. \emph{Settlement} is the final delivery of securities in exchange for full payment.
+    \item \textbf{Slippage:} This refers to the change in price between the moment the trading system decides to execute a transaction and the time the order is actually sent to the exchange. Trend-following strategies tend to experience more slippage because the assets are already moving in the desired direction, whereas mean-reverting strategies are less affected. Reduced latency to market minimizes slippage, while higher asset volatility increases it.  
+    \item \textbf{Market Impact:} This measures the extent to which an order influences the market through its demand for liquidity. The market impact remains uncertain until after the trade is executed. Additionally, there can be an interaction between slippage and market impact (i.e., selling during an upward trending market).
 \end{enumerate}
 \end{remark}
 
 \begin{definition} \hlt{Types of Transaction Cost Models}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Flat Model: cost of trading is the same, regardless of size of order. Model is reasonable if size traded is nearly always about the same, and liquidity remains sufficiently constant.
-\item Linear Model: cost of trading increases at a constant rate relative to size of order. Better estimate than flat transaction cost model.
-\item Piece-Wise Linear Model: using piece-wise linear functions to model costs. Balance between simplicity and accuracy; better accuracy than flat or linear models.
-\item Quadratic Model: most computationally intensive, but also most accurate.
+    \item \textbf{Flat Model:} Assumes that the cost of trading remains constant regardless of the order size. This model is appropriate when the traded size is nearly uniform and liquidity remains stable.
+    \item \textbf{Linear Model:} In this model, the trading cost increases at a constant rate relative to the order size. It provides a better estimate than the flat model.  
+    \item \textbf{Piece-Wise Linear Model:} This approach employs piece-wise linear functions to model costs. It strikes a balance between simplicity and accuracy, offering improved precision compared to flat or linear models.
+    \item \textbf{Quadratic Model:} Although the most computationally intensive, the quadratic model delivers the highest accuracy in cost estimation.
 \end{enumerate}
 \end{definition}

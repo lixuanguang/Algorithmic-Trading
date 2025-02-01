@@ -1,34 +1,34 @@
 \subsubsection{Risk Assessment}
 
 \begin{definition} \hlt{Model Risks}\\
-Quant models has model risk, the risk that the model does not accurately describe, match, or predict the real-world phenomenon. Each component of the quant model may all have model risk.
+Quantitative models inherently carry model risk—the risk that a model fails to accurately describe, match, or predict real-world phenomena. Each element of a quant model is subject to its own potential for error.
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Inapplicability of Modelling: occurs when quant model is mistakenly applied to a problem. May also occur with misapplication of a technique to a given problem.
-\item Model Misspecification: occurs when the model doesn't fit the real world. Model may work fine most of the time, but fail when an extreme event occurs.
-\item Implementation Errors: erors in programming or architecting systems. Architectural error may also occur when models are loaded in a wrong sequence.
+  \item \textbf{Inapplicability of Modelling:} This risk arises when a quant model is applied to a problem for which it was not designed, or when a particular technique is misapplied to a given scenario.
+  \item \textbf{Model Misspecification:} This occurs when the model does not properly reflect the real world. Although a model may perform adequately under normal conditions, it can fail under extreme circumstances.
+  \item \textbf{Implementation Errors:} These include mistakes in coding or system design. Additionally, errors can occur if the model components are executed in an incorrect sequence.
 \end{enumerate}
 \end{definition}
 
 \begin{definition} \hlt{Regime Change Risk}\\
-Quant models are based on relationships prevalent in historical data. If there is a regime change, the historical relationships and behaviour may be altered, hence the model may lose effectiveness.
+Quant models are built on historical data, relying on relationships that have prevailed over time. When a regime change occurs, these historical relationships and behaviors can shift, leading the model to lose its effectiveness.
 \end{definition}
 
 \begin{definition} \hlt{Exogenous Shock Risk}\\	
-Risks driven by information that is not internal to the market, i.e., terrorist attacks, start of wars, bank bailouts, change in regulation such as in shorting rules. May require discretionary overrides.
+This type of risk is driven by external events that are not inherent to the market itself, such as terrorist attacks, the outbreak of wars, bank bailouts, or regulatory changes (e.g., modifications to shorting rules). In such cases, discretionary overrides may be necessary.
 \end{definition}
 
 \begin{definition} \hlt{Contagion Risk}\\
-Happens when other investors hold the same strategies. First part of risk factor relates to how crowded the quant strategy is. Second part relates to what else is held by other investors that could force them to exit the quant strategy in a panic (ATM effect).\\
-Quant liquidation criss may be driven by size and popularity of quantitative strategies, subpar returns from operators leading up to the crisis, the practice of funds cross-collateralising many strategies against each other, and risk targeting (risk managers target a specific level of volatility for their funds or strategies).
+Contagion risk occurs when multiple investors follow similar strategies. There are two components to this risk: first, the extent to which a quant strategy is crowded; and second, the additional positions held by other investors that might force them to exit the strategy in a panic (often referred to as the ATM effect).\\
+Quant liquidation crisis may be triggered by factors such as the sheer size and popularity of quantitative strategies, suboptimal returns by operators leading up to a crisis, the cross-collateralisation of many strategies within funds, and risk targeting—where risk managers aim to maintain a specific level of volatility across their funds or strategies.
 \end{definition}
 
 \begin{method} \hlt{Risk Monitoring Methods}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Exposure Monitoring Tools: with current positions held, the positions are grouped for the various exposures (i.e., valuation, momentum level, volatility) to monitor gross and net exposure to various sectors and industries, buckets of market capitalisation, various style factors.
-\item Profit and Loss Monitors: with current portfolio, compare that with previous day closing price. Intraday performance charts are used. May also look at source of profit, hit rate (percentage of time strategy makes money on a given position).
-\item Execution Monitors: shows progress of executions, i.e., which orders are currently being worked on, which ones are completed, with transaction size and prices. Fill rates for limit orders are used for more passive execution strategies. Slippage and market impact are also monitored.
-\item System Performance Monitors: checks for software and infrastructure errors. Checks performance of CPUs, speeds of various stages of automated processes, latency in communication of messages.
+  \item \textbf{Exposure Monitoring Tools:} These tools aggregate current positions by various exposures (e.g., valuation, momentum, volatility) to monitor both gross and net exposures across sectors, industries, market capitalisation buckets, and style factors.
+  \item \textbf{Profit and Loss Monitors:} By comparing the current portfolio against the previous day’s closing prices, these monitors utilize intraday performance charts and also examine the source of profits and the hit rate (i.e., the percentage of positions where the strategy is profitable).
+  \item \textbf{Execution Monitors:} These displays track the status of orders—indicating which are being processed and which have been completed—along with details such as transaction sizes and prices. They also measure fill rates for limit orders in passive strategies, and monitor slippage and market impact.
+  \item \textbf{System Performance Monitors:} These monitors are responsible for detecting software or infrastructure errors, assessing CPU performance, measuring the speed of various stages of automated processes, and tracking communication latency.
 \end{enumerate}
 \end{method}

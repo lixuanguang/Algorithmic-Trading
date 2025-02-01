@@ -22,20 +22,20 @@
 \begin{remark} \hlt{Model Quality Assessment}
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Cumulative profit graph: if profit profile is not smooth, with long periods of inactivity, sharp losses and gains, then the model may have issues
-\item Average annual rate of return: indicates how well the strategy made on historical data
-\item Variability of returns: the less variable the level of returns, the better the strategy. May look at lumpiness of returns, which is the portion of strategy's total returns that comes from periods that are significantly above average (measures consistency of returns).
-\item Worse Peak-to-Valley Drawdowns: measures maximum decline from any cumulative peak in profit curve. The lower the drawdown the better the strategy. Also, to measure recovery period after drawdowns; the shorter the recovery period the better the strategy.
-\item Predictive Power: R-squared statistic may be used, which shows how much of the variability of the predicted asset have been accounted for. A exceedingly high $R^2$ in would be 0.05 out of sample. Instrument returns may be bucketed by deciles; a model with reliable predictive power is one that appropriately buckets the instruments correctly.
-\item Percentage Winning Trades, Winning Time Periods: whether the strategy tends to make profits from a small portion of trades that do very well, or from a large number of trades. 
-\item Ratios of Returns vs Risk: Statistics such as risk-adjusted return, Sharpe ratio, information ratio, Sterling ratio, Calmer ratio, Omega ratio.
-\item Relationship with Other Strategies: value-add of new strategy compared with results of existing strategy with and without the new idea.
-\item Time decay: understand strategy returns if trades are initiated on lagged basis after receiving a trading signal. Determine strategy sensitivity to timeliness with information received, and crowdedness of strategy.
-\item Sensitivity to specific parameters: high quality strategy has small changes in outcomes from slight changes in parameters. Or else this may be a sign that model may be overfitted.
-\item Overfitting: plot a graph of parameter value vs function outcome; a good model has a flatter curve with no jumps.  Models that are parsimonious (less parameters) uses less assumptions, hence less overfitting.
+\item \textbf{Cumulative Profit Graph:} A smooth profit curve is ideal; if the graph shows long periods of inactivity or exhibits sharp, erratic losses and gains, it may signal issues with the model.
+\item \textbf{Average Annual Rate of Return:} Indicates the historical performance level of the strategy.
+\item \textbf{Variability of Returns:} Lower variability in returns is preferable, as it suggests consistency. Examining the "lumpiness"—the share of total returns derived from periods significantly above average—can further measure return consistency.
+\item \textbf{Peak-to-Valley Drawdowns:} Measures maximum decline from any cumulative peak in the profit curve. Lower drawdowns, along with shorter recovery periods after drawdowns, reflect a more robust strategy.
+\item \textbf{Predictive Power:} The R-squared statistic can be employed to assess how much of the variability in the predicted asset is explained by the model. For example, an exceptionally high \( R^2 \) (around 0.05 out of sample) may warrant further scrutiny. Additionally, bucketing instrument returns by deciles can help verify whether the model categorizes them accurately.
+\item \textbf{Percentage of Winning Trades and Winning Time Periods:} Determines whether the strategy relies on a small number of highly profitable trades or on a larger volume of moderately successful trades.
+\item \textbf{Risk-Adjusted Return Ratios:} Evaluate statistics such as the Sharpe ratio, information ratio, Sterling ratio, Calmar ratio, and Omega ratio to assess the balance between returns and risk.
+\item \textbf{Relationship with Other Strategies:} Consider the incremental value provided by a new strategy by comparing its performance with existing strategies, both independently and in combination.
+\item \textbf{Time Decay:} Examine how the returns of the strategy are affected if trades are initiated on a lagged basis after receiving a trading signal. This helps to determine the sensitivity of the strategy to the timeliness of information and the degree of market saturation.
+\item \textbf{Sensitivity to Specific Parameters:} A high-quality strategy should show only minor variations in outcomes with small changes in its parameters; large fluctuations may indicate overfitting.
+\item \textbf{Overfitting:} By plotting parameter values against the corresponding outcomes, one should observe a relatively flat curve with no abrupt jumps. Models that are parsimonious—that is, those that rely on fewer parameters—tend to be less prone to overfitting.
 \end{enumerate}
 \end{remark}
 
 \begin{remark} \hlt{Other Considerations in Model Testing}\\
-Overestimation of trading costs may cause portfolio to hold positions for longer than optimal, and underestimation may result in high portfolio turnover and bleed from trading costs. Assumptions on availability of short positions must also be made; hard-to-borrow lists must be taken into consideration.
+It is crucial to note that overestimating trading costs can lead to holding positions longer than optimal, whereas underestimating these costs might result in excessive portfolio turnover and a detrimental bleed from trading expenses. Moreover, assumptions regarding the availability of short positions must be carefully considered, especially with respect to hard-to-borrow lists.
 \end{remark}

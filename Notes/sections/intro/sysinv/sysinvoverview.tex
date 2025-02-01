@@ -1,51 +1,51 @@
-\subsection{Systematic Investments Overview}
+\subsection{Overview of Systematic Investments}
 
-A schematic of a live 'production' trading strategy is shown below, but does not include everything else necessary to create the strategy (i.e., research tools).
+The figure below illustrates a live, production-level trading strategy. (Note that the diagram does not include ancillary components—such as research tools—that are also essential for building a complete strategy.)
+
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.4]{intro/strategystructure}
-\caption{Live 'production' trading strategy}
+\input{figures/intro/strategystructure.tikz}
+\caption{Live Production Trading Strategy Overview}
 \end{figure}
-The trading system has three modules:
-\begin{enumerate}[label=\roman*.]
-\setlength{\itemsep}{0pt}
-\item Alpha model: predicts the future of the instruments considered for trading, i.e. directional alpha
-\item Risk model: limits amount of exposure to factors that are unlikely to generate returns but could drive losses, i.e. directional exposure limit on an asset class
-\item Transaction cost model: determine if the cost of the trades needed to migrate from current portfolio to new portfolio is desirable to the portfolio construction model.
-\end{enumerate}
-These models feed into a portfolio construction model that balances the tradeoffs of profit and risk to determine the best portfolio to hold. The model finds the differences in trades that need to be executed.\\
-The execution model then takes the required trades, and using inputs such as urgency in which the trades need to be executed and dynamics of liquidity in the markets, executes the trades in an efficient and low cost manner.\\
 
-\begin{method} \hlt{Chains of Production for Alpha Signals}
+At its core, the trading system is organized into three primary modules:
+
 \begin{enumerate}[label=\roman*.]
 \setlength{\itemsep}{0pt}
-\item Data Curation: for collecting, cleaning, indexing, storing, adjusting, and delivering all data to production chain. Requires experts in market microstructure and data protocols such as FIX.
-\item Feature Analysis: transform raw data into informative signals. Requires experts in information theory, signal extraction and processing, visualisation, labelling, weighting, classifiers, feature importance techniques. Feature analysts collect and catalogue libraries of findings.
-\item Strategists: informative features are transformed into actual investment algorithms. Strategists will parse libraries of features for ideas to develop an investment strategy. Require data scientists with deep knowledge of financial markets and economy. Features may be discovered by black box, but strategy is developed in a white box.
-\item Back-testers: assess profitability of investment strategy under various scenarios. Requires data scientists with deep understanding of empirical and experimental techniques. Good back-tested incorporates in analysis meta-information on how strategy was created.
-\item Deployment Team: integrate strategy code into production line. Requires algorithm specialists and mathematical programmers. To ensure deployed solution is logically identical to prototype, and to optimise implementation sufficiently such that production latency is minimised.
-\item Portfolio Oversight: once strategy is deployed, follows lifecycle.
-\begin{enumerate}[label=\arabic*.]
-\setlength{\itemsep}{0pt}
-\item Embargo: initially, strategy is run on data observed after end date of backtest. If embargoed performance is consistent with backtest, strategy is promoted to next stage.
-\item Paper Trading: strategy run on live, real-time feed. Performance accounts for data parsing latencies, calculation latencies, execution delays, and other time lapses between observation and positioning. 
-\item Graduation: strategy manages real position, whether in isolation of as part of ensemble. Performance evaluated precisely, including attributed risk, returns, and costs.
-\item Re-allocation: based on production performance, allocation is re-assessed frequently and automatically. Strategy allocation follows a concave function, Initial allocation is small. As time passes and strategy performs as expected, allocation is increased. Over time, performance decays and allocations become gradually smaller.
-\item Decommission: if strategy perform below expectations for sufficiently extended period of time, strategy is discontinued.
+\item \textbf{Alpha Model:} Predicts the future behavior of the instruments under consideration, thereby generating directional alpha.
+\item \textbf{Risk Model:} Limits exposure by controlling risk factors that might not generate returns but could lead to losses (i.e., by setting directional exposure limits on asset classes).
+\item \textbf{Transaction Cost Model:} Assesses whether the trading costs required to transition from the current portfolio to a new one are acceptable within the portfolio construction framework.
 \end{enumerate}
+
+These models feed into a portfolio construction model that balances profitability and risk to determine the optimal portfolio configuration. This model identifies the necessary trade adjustments, which are then executed by the system.
+
+The execution model receives the required trades and, based on inputs such as trade urgency and current market liquidity, carries out the transactions in an efficient and cost-effective manner.
+
+\begin{method} \hlt{Chains of Production for Alpha Signals}\\
+The production process for generating alpha signals consists of the following stages:
+\begin{enumerate}[label=\roman*.]
+\setlength{\itemsep}{0pt}
+\item \textbf{Data Curation:} Involves collecting, cleaning, indexing, storing, adjusting, and delivering data to the production pipeline. This stage requires expertise in market microstructure and data protocols (e.g., FIX).
+\item \textbf{Feature Analysis:} Converts raw data into meaningful signals through techniques in information theory, signal extraction, visualization, labeling, weighting, classification, and feature importance assessment. Feature analysts compile and catalogue these insights.
+\item \textbf{Strategy Development:} Transforms informative features into actionable investment algorithms. Strategists mine feature libraries for ideas, blending deep financial market knowledge with data science to develop transparent (white-box) strategies—even if some features originate from black-box methods.
+\item \textbf{Back-Testing:} Evaluates the investment strategy under various scenarios. This process demands rigorous empirical analysis and includes metadata on how the strategy was formulated.
+\item \textbf{Deployment:} Integrates the strategy code into the production system. This step is managed by algorithm specialists and mathematical programmers to ensure fidelity to the prototype while minimizing latency.
+\item \textbf{Portfolio Oversight:} Monitors the strategy post-deployment throughout its lifecycle:
+  \begin{enumerate}[label=\arabic*.]
+  \setlength{\itemsep}{0pt}
+  \item \textbf{Embargo:} Initially, the strategy is run on post-backtest data. If performance is consistent with backtesting, the strategy advances to the next phase.
+  \item \textbf{Paper Trading:} The strategy is executed on a live feed, simulating real trading conditions. This phase accounts for data parsing, calculation delays, execution lags, and other operational latencies.
+  \item \textbf{Graduation:} The strategy is allocated real capital, either individually or as part of an ensemble, with detailed evaluations of risk, returns, and costs.
+  \item \textbf{Re-allocation:} Allocations are dynamically adjusted based on live performance. Initial allocations are small and may be increased as the strategy proves itself, with a subsequent reduction if performance declines.
+  \item \textbf{Decommission:} If the strategy underperforms over an extended period, it is phased out.
+  \end{enumerate}
 \end{enumerate}
 \end{method}
 
-\input{sections/prefaceandprereq/sysinv/alphamod}
-
-\input{sections/prefaceandprereq/sysinv/riskmod}
-
-\input{sections/prefaceandprereq/sysinv/txncostmod}
-
-\input{sections/prefaceandprereq/sysinv/portconstmod}
-
-\input{sections/prefaceandprereq/sysinv/executionmod}
-
-\input{sections/prefaceandprereq/sysinv/research}
-
-\input{sections/prefaceandprereq/sysinv/modelrisk}
+\input{sections/intro/sysinv/alphamod}
+\input{sections/intro/sysinv/riskmod}
+\input{sections/intro/sysinv/txncostmod}
+\input{sections/intro/sysinv/portconstmod}
+\input{sections/intro/sysinv/executionmod}
+\input{sections/intro/sysinv/research}
+\input{sections/intro/sysinv/modelrisk}
