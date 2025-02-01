@@ -178,12 +178,6 @@ Shallow networks with broad family of non-polynomial activation functions have u
 The number of linear regions carved out by deep rectifier network with $d$ inputs, depth $l$, and $n$ units per hidden layer is $O(\binom{n}{d}^{d(d-1)} n^d)$. For maxout networks with $k$ filters per unit, this is $O(k^{(k-1)+d})$.
 \end{remark}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.25]{/math/dl/backprop}
-\caption{Backpropagation Algorithm}
-\end{figure}
-
 \begin{remark} \hlt{Backpropagation}\\
 To calculate the gradient of loss function with respect to each of individual parameters of the neural network.\\
 Model training begins with random initialisation of weights and biases.
@@ -195,5 +189,55 @@ Model training begins with random initialisation of weights and biases.
 \item Weights update: the weights are updated in opposite direction of the gradient
 \end{enumerate}
 \end{remark}
+
+
+\begin{breakablealgorithm}
+\caption{Backpropagation Learning Algorithm}
+\begin{algorithmic}
+\Require \\
+A set of training examples $\mathcal{D} = \{(x_i, y_i)\}_{i=1}^n$\\
+A multilayer network with $L$ layers, weights $w_{ij}^l$, and activation function $f$\\
+Loss function $J(y, o)$\\
+Learning rate $0 < \alpha < 1$\\
+Number of epochs \textit{epochs}.\\
+    
+\State \textit{Initialize all weights:} 
+\For{$w_{ij}^l$ in the network}
+\State $w_{ij}^l \gets \text{small random number}$
+\EndFor\\
+
+\For{$i = 1 \text{ to } \textit{epochs}$}
+\ForAll{training examples $(x,y) \in \mathcal{D}$}\\
+\State \textit{Propagate the inputs forward to compute the outputs}
+\ForAll{neurons $i$ in the input layer}
+\State $a_i^0 \gets x_i$
+\EndFor \\
+\For{$l = 2 \text{ to } L$}
+\ForAll{neurons $i$ in layer $l$}
+\State $z_i^l \gets \displaystyle\sum_j w_{ij}^l\,a_j^{l-1}$
+\State $a_i^l \gets f\bigl(z_i^l\bigr)$
+\EndFor
+\EndFor\\
+
+\State \textit{Propagate deltas backward from output layer to input layer}
+\ForAll{neurone $i$ in the output layer}
+\State \textit{Let  $o_i \equiv a_i^L$ be output of neurone $i$}
+\State $\delta_i^L \gets \dfrac{\partial J(y_i,o_i)}{\partial o_i}\,f'\bigl(z_i^L\bigr)$
+\EndFor\\
+\For{$l = L-1 \text{ to } 1$}
+\ForAll{neurons $i$ in layer $l$}
+\State $\delta_i^l \gets f'\bigl(z_i^l\bigr) \sum_j\bigl(w_{ji}^{l+1}\,\delta_j^{l+1}\bigr)$
+\EndFor
+\EndFor\\
+
+\State \textit{Update weights using the deltas}
+\ForAll{$w_{ij}^l$ in the network}
+\State $w_{ij}^l \gets w_{ij}^l - \alpha\,\delta_i^l\,a_j^{l-1}$
+      \EndFor
+    \EndFor
+  \EndFor
+\end{algorithmic}
+\end{breakablealgorithm}
+
 
 

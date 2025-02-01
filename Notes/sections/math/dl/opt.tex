@@ -156,3 +156,55 @@ Modifies AdaGrad to perform better in non-convex setting by changing gradient ac
 Variant on combination of RMSProp and momentum. Note, momentum is incorporated directly as an estimate of first order moment of gradient; bias corrections are made to estimates of both first-order moments and second-order moments to account for initialisation at origin.\\
 Algorithm is fairly robust to choice of hyper-parameters.
 \end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.41]{/math/dl/newton}
+\caption{Newton's Method with Objective $J(\bm{\theta}) = \frac{1}{m} \sum_{i=1}^m L(f(\bm{x}^{(i)}; \bm{\theta}), y^{(i)})$}
+\end{figure}
+
+\begin{remark} \hlt{Newton's Method}\\
+Based on second-order Taylor's series approximating $J(\bm{\theta})$ near the point $\bm{\theta}_0$, ignoring higher derivatives
+\begin{equation}
+J(\bm{\theta}) \approx J(\bm{\theta}_0) + (\bm{\theta} - \bm{\theta}_0)^T \nabla_{\bm{\theta}} J(\bm{\theta}_0) + \frac{1}{2} (\bm{\theta} - \bm{\theta}_0)^T \bm{H}(\bm{\theta} - \bm{\theta}_0) \nonumber
+\end{equation}
+where $\bm{H}$ is the Hessian of $J$ with respect to $\bm{\theta}$ evaluated at $\bm{\theta}_0$.\\
+Solving for critical point will get the Newton parameter update rule
+\begin{equation}
+\bm{\theta}^{*} = \bm{\theta}_0 - \bm{H}^{-1} \nabla_{\bm{\theta}} J(\bm{\theta}_0) \nonumber
+\end{equation}
+Note that for deep learning, the surface of objective function is non-convex. Regularising the Hessian will solve many of the issues such as saddle points etc.
+\begin{equation}
+\bm{\theta}^{*} = \bm{\theta}_0 - [H(f(\bm{\theta}_0)) + \alpha \bm{I}]^{-1} \nabla_{\bm{\theta}} J(\bm{\theta}_0) \nonumber
+\end{equation}
+Due to requirement for inversion of the $k \times k$ matrix with time complexity $O(k^3)$ at every training iteration, only networks with very small number of parameters may be trained with this method.
+\end{remark}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{/math/dl/conjugrad}
+\caption{Conjugate Gradient Method}
+\end{figure}
+
+\begin{remark} \hlt{Conjugate Gradient Method}\\
+Method effectively avoids computation of inversion Hessian by descending conjugate directions, which is a search direction conjugate to the previous line search direction (will not undo progress made in that direction).\\
+Let current and previous search directions be $\bm{d}_{t}, \bm{d}_{t-1}$. At training iteration $t$, the next search direction $\bm{d}_t$ is
+\begin{equation}
+\bm{d}_t = \nabla_{\bm{\theta}} J(\bm{\theta}) + \beta_t \bm{d}_{t-1} \nonumber
+\end{equation}
+note that $\beta_t$ may be computed via Fletcher Reeves:
+\begin{equation}
+\beta_t = \frac{\nabla_{\bm{\theta}} J(\bm{\theta}_t)^T \nabla_{\bm{\theta}} J(\bm{\theta}_t)}{\nabla_{\bm{\theta}} J(\bm{\theta}_{t-1})^T \nabla_{\bm{\theta}} J(\bm{\theta}_{t-1})} \nonumber
+\end{equation}
+or may be computed with Polak-Ribiere:
+\begin{equation}
+\beta_t = \frac{(\nabla_{\bm{\theta}} J(\bm{\theta}_t) - \nabla_{\bm{\theta}} J(\bm{\theta}_{t-1}))^T \nabla_{\bm{\theta}} J(\bm{\theta}_t)}{\nabla_{\bm{\theta}} J(\bm{\theta}_{t-1})^T \nabla_{\bm{\theta}} J(\bm{\theta}_{t-1})} \nonumber
+\end{equation}
+The non-linear conjugate gradient method is a variation which uses occasional resets where the method is restarted with line search along with the unaltered gradient.
+\end{remark}
+
+\begin{remark} \hlt{Broyden-Fletcher-Goldfarb-Shanno (BGFS) Algorithm}\\
+Similar to conjugate gradient, but uses more direct approach to approximation of newton's update.\\
+Method approximate the inverse of hessian $\bm{H}$ with matrix $\bm{M}_t$, iteratively refined by low rank updates to better approximate $\bm{H}^{-1}$. Direction of gradient descent is then determined by $\bm{\rho}_t = \bm{M}_t \bm{g}_t$. Line search is performed in this direction to determine step size $\epsilon^{*}$. Final update of parameter is then $\bm{\theta}_{t+1} = \bm{\theta}_t + \epsilon^{*} \bm{\rho}_{t}$.\\
+Note, BGFS store matrix $\bm{M}$ which requires $O(n^2)$ memory, making it impractical for most modern models.
+\end{remark}
